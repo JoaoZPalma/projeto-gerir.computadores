@@ -1,8 +1,11 @@
-#ifndef FUNCOES_AUXILIARES_H_INCLUDED
-#define FUNCOES_AUXILIARES_H_INCLUDED
+//#ifndef FUNCOES_AUXILIARES_H_INCLUDED
+//#define FUNCOES_AUXILIARES_H_INCLUDED
 
-#include "constantes1.h"
+#ifndef FUNCOES_PORTATIL_H_INCLUDED
+#define FUNCOES_PORTATIL_H_INCLUDED
+
 #include "funcoes_auxiliares1.h"
+//#include "constantes1.h"
 
 typedef struct
 {
@@ -12,5 +15,7 @@ typedef struct
     float valor;
 
 }tipoPortatil;
+
+void mostrarInformacaoComputadorPorPosicao(tipoPortatil vetor[], int i);
 
 #endif

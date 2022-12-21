@@ -36,3 +36,32 @@
 
 1671112089 c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\constantes1.h
 
+1671639128 source:c:\users\palma\desktop\projeto_v1\funcoes_portatil.c
+	<stdio.h>
+	<string.h>
+	"funcoes_auxiliares1.h"
+	"funcoes_portatil.h"
+
+1671625458 source:c:\users\palma\desktop\projeto_v1\funcoes_requisicao.c
+	<stdio.h>
+	<string.h>
+
+1671639052 source:c:\users\palma\desktop\projeto_v1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funcoes_portatil.h"
+	"funcoes_auxiliares1.h"
+
+1671633666 c:\users\palma\desktop\projeto_v1\funcoes_auxiliares1.h
+	"constantes1.h"
+
+1671627127 c:\users\palma\desktop\projeto_v1\constantes1.h
+
+1671634128 source:c:\users\palma\desktop\projeto_v1\funcoes_auxiliares1.c
+	<stdio.h>
+	<string.h>
+	"funcoes_auxiliares1.h"
+
+1671638995 c:\users\palma\desktop\projeto_v1\funcoes_portatil.h
+	"funcoes_auxiliares1.h"
+

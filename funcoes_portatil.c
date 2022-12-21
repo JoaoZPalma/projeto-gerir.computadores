@@ -1,2 +1,48 @@
 #include <stdio.h>
 #include <string.h>
+
+#include "funcoes_auxiliares1.h"
+#include "funcoes_portatil.h"
+
+char mensagemNumeroIdentificacaoPortatil[] = ("\nNumero de Identificacao: ");
+char mensagemProcessadorPortatil[] = ("\nProcessador: \n1-i3\n2-i5\n3-i7\n");
+char mensagemRamPortatil[] = ("RAM do portatil (em gigabytes): ");
+char mensagemEstadoPortatil[] = ("\nEstado do Portatil: \n1-Disponivel\n2-Requisitado\n3-Avariado\n");
+char mensagemLocalizacaoPortatil[] = ("\nLocalizacao do portatil:\n1- Campus 1\n2- Campus 2\n3- Campus 5\n4- Residencias\n");
+char mensagemValorPortatil[] = ("Insira o valor do portatil(em euros): ");
+char mensagemQuantidadeAvariasPortatil[] = ("\nQuantidade de avarias: ");
+char mensagemQuantidadeRequisicoesPortatil[] = ("\nQuantidade de requisicoes: ");
+
+
+
+
+
+void registarComputador(tipoPortatil vetor[])
+{
+    int quantidadeComputadoresRegistados,i;
+    printf("Insira agora os dados de registo do computador em causa:");
+    vetor[i].identificacao = lerInteiro(mensagemNumeroIdentificacaoPortatil,1,99999);
+    vetor[i].processador = lerInteiro(mensagemProcessadorPortatil,1,3);
+    vetor[i].ram = lerInteiro(mensagemRamPortatil,4,128);
+    vetor[i].estadoPortatil = lerInteiro(mensagemEstadoPortatil,1,3);
+    vetor[i].localizacaoPortatil = lerInteiro(mensagemLocalizacaoPortatil,1,4);
+    vetor[i].dataAquisicao = lerData();
+    vetor[i].valor = lerFloat(mensagemValorPortatil,1.0,999999.9);
+    vetor[i].quantidadeAvarias = lerInteiro(mensagemQuantidadeAvariasPortatil,0,9999);
+    vetor[i].quantidadeRequisicoes = lerInteiro(mensagemQuantidadeRequisicoesPortatil,0,9999);
+    quantidadeComputadoresRegistados++;
+
+}
+
+void mostrarInformacaoComputadorPorPosicao(tipoPortatil vetor[], int i)
+{
+    printf("O computador de id: %d possui os seguintes dados:\n",vetor[i].identificacao);
+    printf("Processador: %d\n",vetor[i].processador);
+    printf("RAM: %d\n",vetor[i].ram);
+    printf("Estado: %d\n",vetor[i].estadoPortatil);
+    printf("Localizacao: %d\n",vetor[i].localizacaoPortatil);
+    printf("Data de aquisicao: %d\n",vetor[i].dataAquisicao);
+    printf("Valor: %d\n",vetor[i].valor);
+    printf("Quantidade de avarias: %d\n",vetor[i].quantidadeAvarias);
+    printf("Quantidade de requisicoes: %d\n",vetor[i].quantidadeRequisicoes);
+}
