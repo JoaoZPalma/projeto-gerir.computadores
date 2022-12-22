@@ -16,6 +16,8 @@ typedef struct
 
 }tipoPortatil;
 
+void registarComputador(tipoPortatil vetor[],int quantidadeDeComputadoresRegistados);
 void mostrarInformacaoComputadorPorPosicao(tipoPortatil vetor[], int i);
+
 
 #endif

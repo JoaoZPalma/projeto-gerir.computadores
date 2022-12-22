@@ -8,18 +8,23 @@ int menuPrincipal();
 
 int main()
 {
-    int quantidadeComputadoresRegistados = 0;
+    int quantidadePortateisRegistados = 0;
+    int quantidadePortateisRequisitados = 0;
     int opcaoPrincipal,portateisDisponiveis,portateisRequisitados;
     tipoPortatil vetorPortateis[MAX_PORTATEIS];
-    portateisDisponiveis = MAX_PORTATEIS-portateisRequisitados;
+
+    do
+    {
+    portateisDisponiveis = quantidadePortateisRegistados-quantidadePortateisRequisitados;
 
 
     opcaoPrincipal = menuPrincipal();
     switch (opcaoPrincipal)
     {
     case 1: //Realizar requisição de 1 computador
-        registarComputador(vetorPortateis);
-        mostrarInformacaoComputadorPorPosicao(vetorPortateis,0);
+        registarPortatil(vetorPortateis,quantidadePortateisRegistados);
+        mostrarInformacaoPortatilPorPosicao(vetorPortateis,quantidadePortateisRegistados);
+        quantidadePortateisRegistados++;
         break;
     case 2:
         break;
@@ -49,7 +54,7 @@ int main()
          printf ("Opcao Invalida\n");
 
     }
-    return 0;
+    }while(opcaoPrincipal != '0');
 }
 
 int menuPrincipal()
@@ -57,7 +62,7 @@ int menuPrincipal()
     int opcao;
     printf("Quantidade de portateis existentes: %d\n", MAX_PORTATEIS);
     printf("Quantidade de portateis disponiveis: %d\n");
-    printf("1 - Registar computador");
+    printf("1 - Registar computador\n");
 
     scanf("%d",&opcao);
     return opcao;
