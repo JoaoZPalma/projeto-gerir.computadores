@@ -46,3 +46,16 @@ void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int i)
     printf("Quantidade de avarias: %d\n",vetor[i].quantidadeAvarias);
     printf("Quantidade de requisicoes: %d\n",vetor[i].quantidadeRequisicoes);
 }
+
+int menuRegistoPortatil()
+{
+    int opcaoRegistoPortatil;
+    printf("Por favor introduza uma opcao\n");
+    printf("1 - Registar computador\n");
+    printf("2 - Listar computadores\n");
+    printf("0 - Voltar ao menu anterior\n");
+    printf("Opcao: ");
+
+    scanf("%d",&opcaoRegistoPortatil);
+    return opcaoRegistoPortatil;
+}
