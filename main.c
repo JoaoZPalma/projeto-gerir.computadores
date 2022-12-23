@@ -13,7 +13,7 @@ int main()
     int quantidadePortateisRegistados = 0;
     int quantidadePortateisRequisitados = 0;
     int quantidadePortateisAvariados = 0;
-    int opcaoPrincipal, portateisDisponiveis, portateisRequisitados, opcaoRegisto;
+    int opcaoPrincipal, portateisDisponiveis, portateisRequisitados, opcaoRegisto, i;
     tipoPortatil vetorPortateis[MAX_PORTATEIS];
 
     do
@@ -35,7 +35,10 @@ int main()
                     quantidadePortateisRegistados++;
                     break;
                 case 2:
-                    mostrarInformacaoPortatilPorPosicao(vetorPortateis,quantidadePortateisRegistados);
+                    for(i = 0;i < quantidadePortateisRegistados; i++)
+                    {
+                    mostrarInformacaoPortatilPorPosicao(vetorPortateis,i);
+                    }
                     break;
                 case 0:
                     printf("\nA voltar ao menu anterior\n\n");
