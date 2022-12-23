@@ -17,7 +17,7 @@ typedef struct
 }tipoPortatil;
 
 void registarPortatil(tipoPortatil vetor[],int quantidadeDeComputadoresRegistados);
-void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int i);
+void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int posicao);
 int menuRegistoPortatil();
 
 
