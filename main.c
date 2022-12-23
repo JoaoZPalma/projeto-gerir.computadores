@@ -13,7 +13,7 @@ int main()
     int quantidadePortateisRegistados = 0;
     int quantidadePortateisRequisitados = 0;
     int quantidadePortateisAvariados = 0;
-    int opcaoPrincipal, portateisDisponiveis, portateisRequisitados, opcaoRegisto, i;
+    int opcaoPrincipal, portateisDisponiveis, portateisRequisitados, opcaoRegisto, i, numeroIdentificao,pos;
     tipoPortatil vetorPortateis[MAX_PORTATEIS];
 
     do
@@ -51,6 +51,19 @@ int main()
             while(opcaoRegisto != 0);
             break;
         case 2:
+            printf("Insira o numero de identificacao do portatil:\t");
+            scanf("%d", &numeroIdentificao);
+            limpaBufferStdin();
+            pos = procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados,numeroIdentificao);
+            if (pos != -1)
+            {
+                mostrarInformacaoPortatilPorPosicao(vetorPortateis, pos);
+
+            }
+            else
+            {
+                printf("Nao foi possivel encontrar esse portatil\n");
+            }
             break;
         case 3:
             break;
@@ -91,7 +104,9 @@ int menuPrincipal()
     printf("Quantidade de portateis existentes: %d\n", MAX_PORTATEIS);
     printf("Quantidade de portateis disponiveis: %d\n");
     printf("1 - Registar computador\n");
+    printf("2 - Procurar portatil por numero de identificao\n");
 
     scanf("%d",&opcao);
+    limpaBufferStdin();
     return opcao;
 }

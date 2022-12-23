@@ -61,6 +61,7 @@ int menuRegistoPortatil()
     printf("Opcao: ");
 
     scanf("%d",&opcaoRegistoPortatil);
+    limpaBufferStdin();
     return opcaoRegistoPortatil;
 }
 
@@ -94,10 +95,35 @@ int menuRAM()
     case 5:
         quantidadeRAM= 64;
         break;
-
     }
     return quantidadeRAM;
 
+}
 
+int procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortateisRegistados, int numeroIdentificacao)
+{
+    int i,pos;
+    pos = -1;
+
+        if (quantidadePortateisRegistados == 0)
+        {
+            printf("Nao existem portateis registados\n");
+        }
+        else
+        {
+            for(i=0; i<MAX_PORTATEIS; i++)
+    {
+
+            if (numeroIdentificacao==vetor[i].identificacao)
+            {
+            pos = i;
+            i = quantidadePortateisRegistados;
+            }
+
+        }
+
+    }
+
+    return pos;
 
 }

@@ -20,6 +20,8 @@ void registarPortatil(tipoPortatil vetor[],int quantidadeDeComputadoresRegistado
 void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int posicao);
 int menuRegistoPortatil();
 int menuRAM();
+int procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortateisRegistados, int numeroIdentificacao);
+
 
 
 #endif
