@@ -34,17 +34,17 @@ void registarPortatil(tipoPortatil vetor[],int quantidadePortateisRegistados)
 
 }
 
-void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int i)
+void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int posicao)
 {
-    printf("O computador de id: %d possui os seguintes dados:\n",vetor[i].identificacao);
-    printf("Processador: %d\n",vetor[i].processador);
-    printf("RAM: %d\n",vetor[i].ram);
-    printf("Estado: %d\n",vetor[i].estadoPortatil);
-    printf("Localizacao: %d\n",vetor[i].localizacaoPortatil);
-    printf("Data de aquisicao: %d-%d-%d\n",vetor[i].dataAquisicao.dia,vetor[i].dataAquisicao.mes,vetor[i].dataAquisicao.ano);
-    printf("Valor: %.2f\n",vetor[i].valor);
-    printf("Quantidade de avarias: %d\n",vetor[i].quantidadeAvarias);
-    printf("Quantidade de requisicoes: %d\n",vetor[i].quantidadeRequisicoes);
+    printf("O computador de id: %d possui os seguintes dados:\n",vetor[posicao].identificacao);
+    printf("Processador: %d\n",vetor[posicao].processador);
+    printf("RAM: %d\n",vetor[posicao].ram);
+    printf("Estado: %d\n",vetor[posicao].estadoPortatil);
+    printf("Localizacao: %d\n",vetor[posicao].localizacaoPortatil);
+    printf("Data de aquisicao: %d-%d-%d\n",vetor[posicao].dataAquisicao.dia,vetor[posicao].dataAquisicao.mes,vetor[posicao].dataAquisicao.ano);
+    printf("Valor: %.2f\n",vetor[posicao].valor);
+    printf("Quantidade de avarias: %d\n",vetor[posicao].quantidadeAvarias);
+    printf("Quantidade de requisicoes: %d\n\n",vetor[posicao].quantidadeRequisicoes);
 }
 
 int menuRegistoPortatil()
