@@ -33,15 +33,50 @@ void registarPortatil(tipoPortatil vetor[],int quantidadePortateisRegistados)
     //quantidadeComputadoresRegistados++;
 
 }
-
 void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int posicao)
 {
     printf("----------------------------------------------------------------------------------\n");
     printf("O computador de id: %d possui os seguintes dados:\n",vetor[posicao].identificacao);
-    printf("Processador: %d\n",vetor[posicao].processador);
-    printf("RAM: %d\n",vetor[posicao].ram);
-    printf("Estado: %d\n",vetor[posicao].estadoPortatil);
-    printf("Localizacao: %d\n",vetor[posicao].localizacaoPortatil);
+    switch(vetor[posicao].processador)
+    {
+    case 1:
+        printf("Processador: i3\n");
+        break;
+    case 2:
+        printf("Processador: i5\n");
+        break;
+    case 3:
+        printf("Processador: i7\n");
+        break;
+    }
+    printf("RAM: %d GB\n",vetor[posicao].ram);
+    switch(vetor[posicao].estadoPortatil)
+    {
+    case 1:
+        printf("Estado: disponivel\n");
+        break;
+    case 2:
+        printf("Estado: requisitado\n");
+        break;
+    case 3:
+        printf("Estado: indisponivel\n");
+        break;
+    }
+    switch(vetor[posicao].localizacaoPortatil)
+    {
+    case 1:
+        printf("Localizacao: Campus1\n");
+        break;
+    case 2:
+        printf("Localizacao: Campus2\n");
+        break;
+    case 3:
+        printf("Localizacao: Campus5\n");
+        break;
+    case 4:
+        printf("Localizacao: Residencias\n");
+        break;
+    }
     printf("Data de aquisicao: %d-%d-%d\n",vetor[posicao].dataAquisicao.dia,vetor[posicao].dataAquisicao.mes,vetor[posicao].dataAquisicao.ano);
     printf("Valor: %.2f\n",vetor[posicao].valor);
     printf("Quantidade de avarias: %d\n",vetor[posicao].quantidadeAvarias);
@@ -105,19 +140,19 @@ int procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortatei
     int i,pos;
     pos = -1;
 
-        if (quantidadePortateisRegistados == 0)
-        {
-            printf("Nao existem portateis registados\n");
-        }
-        else
-        {
-            for(i=0; i<MAX_PORTATEIS; i++)
+    if (quantidadePortateisRegistados == 0)
     {
+        printf("Nao existem portateis registados\n");
+    }
+    else
+    {
+        for(i=0; i<MAX_PORTATEIS; i++)
+        {
 
             if (numeroIdentificacao==vetor[i].identificacao)
             {
-            pos = i;
-            i = quantidadePortateisRegistados;
+                pos = i;
+                i = quantidadePortateisRegistados;
             }
 
         }
