@@ -7,13 +7,13 @@
 char mensagemNumeroIdentificacaoPortatil[] = "\nNumero de Identificacao";
 char mensagemProcessadorPortatil[] = "\nProcessador: \n1-i3\n2-i5\n3-i7\n";
 char mensagemRamPortatil[] = "RAM do portatil (em gigabytes)";
-char mensagemEstadoPortatil[] = "\nEstado do Portatil: \n1-Disponivel\n2-Requisitado\n3-Avariado\n";
+char mensagemEstadoPortatil[] = "\nEstado do Portatil: \n1-Disponivel\n2-Indisponivel\n";
 char mensagemLocalizacaoPortatil[] = "\nLocalizacao do portatil:\n1- Campus 1\n2- Campus 2\n3- Campus 5\n4- Residencias\n";
 char mensagemValorPortatil[] = "Insira o valor do portatil(em euros)";
-char mensagemQuantidadeAvariasPortatil[] = "\nQuantidade de avarias";
-char mensagemQuantidadeRequisicoesPortatil[] = "\nQuantidade de requisicoes";
+//char mensagemQuantidadeAvariasPortatil[] = "\nQuantidade de avarias";
+//char mensagemQuantidadeRequisicoesPortatil[] = "\nQuantidade de requisicoes";
 
-int quantidadePortateisRegistados;
+int quantidadePortateisRegistados,quantidadePortateisIndisponiveis;
 
 
 
@@ -24,12 +24,19 @@ void registarPortatil(tipoPortatil vetor[],int quantidadePortateisRegistados)
     vetor[quantidadePortateisRegistados].identificacao = lerInteiro(mensagemNumeroIdentificacaoPortatil,1,99999);
     vetor[quantidadePortateisRegistados].processador = lerInteiro(mensagemProcessadorPortatil,1,3);
     vetor[quantidadePortateisRegistados].ram = menuRAM();
-    vetor[quantidadePortateisRegistados].estadoPortatil = lerInteiro(mensagemEstadoPortatil,1,3);
+    vetor[quantidadePortateisRegistados].estadoPortatil = lerInteiro(mensagemEstadoPortatil,1,2);
     vetor[quantidadePortateisRegistados].localizacaoPortatil = lerInteiro(mensagemLocalizacaoPortatil,1,4);
     vetor[quantidadePortateisRegistados].dataAquisicao = lerData();
     vetor[quantidadePortateisRegistados].valor = lerFloat(mensagemValorPortatil,1.0,999999.99);
-    vetor[quantidadePortateisRegistados].quantidadeAvarias = lerInteiro(mensagemQuantidadeAvariasPortatil,0,9999);
-    vetor[quantidadePortateisRegistados].quantidadeRequisicoes = lerInteiro(mensagemQuantidadeRequisicoesPortatil,0,9999);
+    vetor[quantidadePortateisRegistados].quantidadeAvarias = 0;
+    vetor[quantidadePortateisRegistados].quantidadeRequisicoes = 0;
+    quantidadePortateisRegistados++;
+    if (vetor[quantidadePortateisRegistados].estadoPortatil==2)
+    {
+        quantidadePortateisIndisponiveis++;
+    }
+//    vetor[quantidadePortateisRegistados].quantidadeAvarias = lerInteiro(mensagemQuantidadeAvariasPortatil,0,9999);
+//    vetor[quantidadePortateisRegistados].quantidadeRequisicoes = lerInteiro(mensagemQuantidadeRequisicoesPortatil,0,9999);
     //quantidadeComputadoresRegistados++;
 
 }
@@ -56,11 +63,11 @@ void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int posicao)
         printf("Estado: disponivel\n");
         break;
     case 2:
-        printf("Estado: requisitado\n");
-        break;
-    case 3:
         printf("Estado: indisponivel\n");
         break;
+//    case 3:
+//        printf("Estado: indisponivel\n");
+//        break;
     }
     switch(vetor[posicao].localizacaoPortatil)
     {

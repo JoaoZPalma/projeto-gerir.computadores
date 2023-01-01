@@ -71,3 +71,38 @@
 	"constantes1.h"
 	"funcoes_auxiliares1.h"
 
+1672589039 source:c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\funcoes_auxiliares1.c
+	<stdio.h>
+	<string.h>
+	"funcoes_auxiliares1.h"
+
+1672589039 c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\funcoes_auxiliares1.h
+	"constantes1.h"
+
+1672589039 c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\constantes1.h
+
+1672599961 source:c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\funcoes_portatil.c
+	<stdio.h>
+	<string.h>
+	"funcoes_auxiliares1.h"
+	"funcoes_portatil.h"
+
+1672589039 c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\funcoes_portatil.h
+	"funcoes_auxiliares1.h"
+
+1672589039 source:c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\funcoes_requisicao.c
+	<stdio.h>
+	<string.h>
+
+1672599907 source:c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\main.c
+	<stdio.h>
+	<stdlib.h>
+	"constantes1.h"
+	"funcoes_auxiliares1.h"
+	"funcoes_portatil.h"
+	"funcoes_requisicao.h"
+
+1672589039 c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\funcoes_requisicao.h
+	"constantes1.h"
+	"funcoes_auxiliares1.h"
+

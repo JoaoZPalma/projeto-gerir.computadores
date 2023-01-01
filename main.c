@@ -6,22 +6,23 @@
 #include "funcoes_portatil.h"
 #include "funcoes_requisicao.h"
 
-int menuPrincipal();
+int menuPrincipal(int quantidadePortateisRegistados, int quantidadePortateisRequisicoes, int quantidadePortateisRequisicoesAtivas, int quantidadePortateisIndisponiveis);
 
 int main()
 {
     int quantidadePortateisRegistados = 0;
-    int quantidadePortateisRequisitados = 0;
-    int quantidadePortateisAvariados = 0;
-    int opcaoPrincipal, portateisDisponiveis, portateisRequisitados, opcaoRegisto, i, numeroIdentificao,pos;
+    int quantidadePortateisRequisicoes = 0;
+    int quantidadePortateisIndisponiveis = 0;
+    int quantidadePortateisRequisicoesAtivas = 0;
+    int opcaoPrincipal, quantidadePortateisDisponiveis, opcaoRegisto, i, numeroIdentificao,pos;
     tipoPortatil vetorPortateis[MAX_PORTATEIS];
 
     do
     {
-        portateisDisponiveis = quantidadePortateisRegistados-quantidadePortateisRequisitados-quantidadePortateisAvariados;
 
 
-        opcaoPrincipal = menuPrincipal();
+
+        opcaoPrincipal = menuPrincipal(quantidadePortateisRegistados, quantidadePortateisRequisicoes, quantidadePortateisRequisicoesAtivas, quantidadePortateisIndisponiveis);
         switch (opcaoPrincipal)
         {
         case 1: //Realizar requisição de 1 computador
@@ -32,12 +33,16 @@ int main()
                 {
                 case 1:
                     registarPortatil(vetorPortateis,quantidadePortateisRegistados);
+                    if (vetorPortateis[quantidadePortateisRegistados].estadoPortatil==2)
+                        {
+                            quantidadePortateisIndisponiveis++;
+                        }
                     quantidadePortateisRegistados++;
                     break;
                 case 2:
-                    for(i = 0;i < quantidadePortateisRegistados; i++)
+                    for(i = 0; i < quantidadePortateisRegistados; i++)
                     {
-                    mostrarInformacaoPortatilPorPosicao(vetorPortateis,i);
+                        mostrarInformacaoPortatilPorPosicao(vetorPortateis,i);
                     }
                     break;
                 case 0:
@@ -98,11 +103,13 @@ int main()
     return 0;
 }
 
-int menuPrincipal()
+int menuPrincipal(int quantidadePortateisRegistados, int quantidadePortateisRequisicoes, int quantidadePortateisRequisicoesAtivas, int quantidadePortateisIndisponiveis)
 {
-    int opcao;
-    printf("Quantidade de portateis existentes: %d\n", MAX_PORTATEIS);
-    printf("Quantidade de portateis disponiveis: %d\n");
+
+    int opcao, quantidadePortateisDisponiveis;//, quantidadePortateisDisponiveis,quantidadePortateisRegistados,quantidadePortateisRequisitados,quantidadePortateisAvariados;
+    quantidadePortateisDisponiveis = quantidadePortateisRegistados-quantidadePortateisRequisicoesAtivas-quantidadePortateisIndisponiveis;
+    printf("Quantidade de portateis existentes: %d\t\t Quantidade de requisicoes totais: %d\n", quantidadePortateisRegistados, quantidadePortateisRequisicoes);
+    printf("Quantidade de portateis disponiveis: %d\t\t Quantidade de requisicoes ativas: %d\n", quantidadePortateisDisponiveis, quantidadePortateisRequisicoesAtivas);
     printf("1 - Registar computador\n");
     printf("2 - Procurar portatil por numero de identificao\n");
 
