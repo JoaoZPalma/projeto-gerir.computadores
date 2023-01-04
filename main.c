@@ -7,6 +7,8 @@
 #include "funcoes_requisicao.h"
 
 int menuPrincipal(int quantidadePortateisRegistados, int quantidadePortateisRequisicoes, int quantidadePortateisRequisicoesAtivas, int quantidadePortateisIndisponiveis);
+char mensagemRepetir[]="Deseja repetir o procedimento?";
+char mensagemPedirNumeroIdentificaoPortatil[] = "Insira o numero de identificao do portatil:\t";
 
 int main()
 {
@@ -14,6 +16,9 @@ int main()
     int quantidadePortateisRequisicoes = 0;
     int quantidadePortateisIndisponiveis = 0;
     int quantidadePortateisRequisicoesAtivas = 0;
+    int repetir=0;
+    int numeroIdentificacao;
+
     int opcaoPrincipal, quantidadePortateisDisponiveis, opcaoRegisto, i, numeroIdentificao,pos;
     tipoPortatil vetorPortateis[MAX_PORTATEIS];
 
@@ -56,19 +61,22 @@ int main()
             while(opcaoRegisto != 0);
             break;
         case 2:
-            printf("Insira o numero de identificacao do portatil:\t");
-            scanf("%d", &numeroIdentificao);
-            limpaBufferStdin();
-            pos = procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados,numeroIdentificao);
-            if (pos != -1)
-            {
-                mostrarInformacaoPortatilPorPosicao(vetorPortateis, pos);
+            pos=-1;
+            do{
+                numeroIdentificacao = lerInteiro(mensagemPedirNumeroIdentificaoPortatil,1,99999);
+                pos = procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados, numeroIdentificacao);
+                if (pos != -1)
+                {
+                    mostrarInformacaoPortatilPorPosicao(vetorPortateis, pos);
 
-            }
-            else
-            {
-                printf("Nao foi possivel encontrar esse portatil\n");
-            }
+                }
+                else
+                {
+                    printf("Nao foi possivel encontrar esse portatil\n");
+                    printf("Deseja tentar novamente? \n1- SIM\n2- NAO\n");
+                    repetir = lerInteiro(mensagemRepetir,1,2);
+                }
+            }while((repetir==1) &&( pos==-1));
             break;
         case 3:
             break;

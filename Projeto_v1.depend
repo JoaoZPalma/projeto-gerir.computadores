@@ -81,20 +81,20 @@
 
 1672589039 c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\constantes1.h
 
-1672599961 source:c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\funcoes_portatil.c
+1672870393 source:c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\funcoes_portatil.c
 	<stdio.h>
 	<string.h>
 	"funcoes_auxiliares1.h"
 	"funcoes_portatil.h"
 
-1672589039 c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\funcoes_portatil.h
+1672870416 c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\funcoes_portatil.h
 	"funcoes_auxiliares1.h"
 
 1672589039 source:c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\funcoes_requisicao.c
 	<stdio.h>
 	<string.h>
 
-1672599907 source:c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\main.c
+1672871054 source:c:\users\drudo\desktop\projetoportateis\projeto-gerir.computadores\main.c
 	<stdio.h>
 	<stdlib.h>
 	"constantes1.h"

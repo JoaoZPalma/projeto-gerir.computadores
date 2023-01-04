@@ -16,12 +16,14 @@ typedef struct
 
 }tipoPortatil;
 
+
+
 void registarPortatil(tipoPortatil vetor[],int quantidadeDeComputadoresRegistados);
 void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int posicao);
 int menuRegistoPortatil();
 int menuRAM();
 int procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortateisRegistados, int numeroIdentificacao);
-
+void alterarLocalizacaoPortatil(tipoPortatil vetor[], int quantidadePortateisRegistados);
 
 
 #endif

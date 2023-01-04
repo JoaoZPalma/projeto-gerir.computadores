@@ -7,11 +7,13 @@
 char mensagemNumeroIdentificacaoPortatil[] = "\nNumero de Identificacao";
 char mensagemProcessadorPortatil[] = "\nProcessador: \n1-i3\n2-i5\n3-i7\n";
 char mensagemRamPortatil[] = "RAM do portatil (em gigabytes)";
-char mensagemEstadoPortatil[] = "\nEstado do Portatil: \n1-Disponivel\n2-Indisponivel\n";
+//char mensagemEstadoPortatil[] = "\nEstado do Portatil: \n1-Disponivel\n2-Indisponivel\n";
 char mensagemLocalizacaoPortatil[] = "\nLocalizacao do portatil:\n1- Campus 1\n2- Campus 2\n3- Campus 5\n4- Residencias\n";
 char mensagemValorPortatil[] = "Insira o valor do portatil(em euros)";
 //char mensagemQuantidadeAvariasPortatil[] = "\nQuantidade de avarias";
 //char mensagemQuantidadeRequisicoesPortatil[] = "\nQuantidade de requisicoes";
+
+
 
 int quantidadePortateisRegistados,quantidadePortateisIndisponiveis;
 
@@ -22,9 +24,10 @@ void registarPortatil(tipoPortatil vetor[],int quantidadePortateisRegistados)
 {
     printf("Insira agora os dados de registo do computador em causa:");
     vetor[quantidadePortateisRegistados].identificacao = lerInteiro(mensagemNumeroIdentificacaoPortatil,1,99999);
+//    if (vetor[quantidadePortateisRegistados].identificacao == )
     vetor[quantidadePortateisRegistados].processador = lerInteiro(mensagemProcessadorPortatil,1,3);
     vetor[quantidadePortateisRegistados].ram = menuRAM();
-    vetor[quantidadePortateisRegistados].estadoPortatil = lerInteiro(mensagemEstadoPortatil,1,2);
+    vetor[quantidadePortateisRegistados].estadoPortatil = 1;
     vetor[quantidadePortateisRegistados].localizacaoPortatil = lerInteiro(mensagemLocalizacaoPortatil,1,4);
     vetor[quantidadePortateisRegistados].dataAquisicao = lerData();
     vetor[quantidadePortateisRegistados].valor = lerFloat(mensagemValorPortatil,1.0,999999.99);
@@ -65,9 +68,9 @@ void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int posicao)
     case 2:
         printf("Estado: indisponivel\n");
         break;
-//    case 3:
-//        printf("Estado: indisponivel\n");
-//        break;
+    case 3:
+        printf("Estado: indisponivel\n");
+        break;
     }
     switch(vetor[posicao].localizacaoPortatil)
     {
@@ -167,5 +170,13 @@ int procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortatei
     }
 
     return pos;
+
+}
+
+void alterarLocalizacaoPortatil(tipoPortatil vetor[], int quantidadePortateisRegistados)
+{
+ //   printf("");
+//    procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortateisRegistados, int numeroIdentificacao)
+
 
 }
