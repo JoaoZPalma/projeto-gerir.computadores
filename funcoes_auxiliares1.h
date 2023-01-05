@@ -14,6 +14,4 @@ void lerString(char mensagem[MAX_STRING], char vetorCaracteres[MAX_STRING], int 
 void limpaBufferStdin(void);
 tipoData lerData(void);
 
-
 #endif // FUNCOES_AUXILIARES_H_INCLUDED
-

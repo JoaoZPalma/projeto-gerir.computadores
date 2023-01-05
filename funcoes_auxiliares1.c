@@ -121,9 +121,9 @@ tipoData lerData(void)
 {
     tipoData data;
     int maxDiasMes;
-    char mensagemDataAno[] = ("\nInsira a o ano: ");
-    char mensagemDataMes[] = ("\nInsira o mes:");
-    char mensagemDataDia[] = ("\nInsira o dia:");
+    char mensagemDataAno[] = "\nInsira a o ano: ";
+    char mensagemDataMes[] = "\nInsira o mes:";
+    char mensagemDataDia[] = "\nInsira o dia:";
 
     data.ano = lerInteiro(mensagemDataAno,2000, 2022);
     data.mes = lerInteiro(mensagemDataMes,1, 12);

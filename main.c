@@ -30,7 +30,7 @@ int main()
         opcaoPrincipal = menuPrincipal(quantidadePortateisRegistados, quantidadePortateisRequisicoes, quantidadePortateisRequisicoesAtivas, quantidadePortateisIndisponiveis);
         switch (opcaoPrincipal)
         {
-        case 1: //Realizar requisição de 1 computador
+        case 1: //Realizar registo de 1 computador
             do
             {
                 opcaoRegisto = menuRegistoPortatil();
@@ -120,6 +120,7 @@ int menuPrincipal(int quantidadePortateisRegistados, int quantidadePortateisRequ
     printf("Quantidade de portateis disponiveis: %d\t\t Quantidade de requisicoes ativas: %d\n", quantidadePortateisDisponiveis, quantidadePortateisRequisicoesAtivas);
     printf("1 - Registar computador\n");
     printf("2 - Procurar portatil por numero de identificao\n");
+    printf("Opcao: ");
 
     scanf("%d",&opcao);
     limpaBufferStdin();
