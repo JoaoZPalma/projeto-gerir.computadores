@@ -63,8 +63,9 @@ int main()
         case 2:
             pos=-1;
             do{
-                numeroIdentificacao = lerInteiro(mensagemPedirNumeroIdentificaoPortatil,1,99999);
-                pos = procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados,numeroIdentificacao);
+//                numeroIdentificacao = lerInteiro(mensagemPedirNumeroIdentificaoPortatil,1,99999);
+//                pos = procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados,numeroIdentificacao);
+                pos= procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados,-1);
                 if (pos != -1)
                 {
                     mostrarInformacaoPortatilPorPosicao(vetorPortateis, pos);
@@ -72,13 +73,14 @@ int main()
                 }
                 else
                 {
-                    printf("Nao foi possivel encontrar esse portatil\n");
+                    //printf("Nao foi possivel encontrar esse portatil\n");
                     printf("Deseja tentar novamente? \n1- SIM\n2- NAO\n");
                     repetir = lerInteiro(mensagemRepetir,1,2);
                 }
             }while((repetir==1) &&( pos==-1));
             break;
         case 3:
+            alterarLocalizacaoPortatil(vetorPortateis,quantidadePortateisRegistados);
             break;
         case 4:
             break;
@@ -120,7 +122,10 @@ int menuPrincipal(int quantidadePortateisRegistados, int quantidadePortateisRequ
     printf("Quantidade de portateis disponiveis: %d\t\t Quantidade de requisicoes ativas: %d\n", quantidadePortateisDisponiveis, quantidadePortateisRequisicoesAtivas);
     printf("1 - Registar computador\n");
     printf("2 - Procurar portatil por numero de identificao\n");
+    printf("3 - Alterar posicao portatil\n");
+
     printf("Opcao: ");
+
 
     scanf("%d",&opcao);
     limpaBufferStdin();

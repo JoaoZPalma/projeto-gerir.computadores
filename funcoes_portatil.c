@@ -4,7 +4,7 @@
 #include "funcoes_auxiliares1.h"
 #include "funcoes_portatil.h"
 
-char mensagemNumeroIdentificacaoPortatil[] = "\nNumero de Identificacao";
+char mensagemNumeroIdentificacaoPortatil[] = "\nNumero de Identificacao do portatil: ";
 char mensagemProcessadorPortatil[] = "\nProcessador: \n1-i3\n2-i5\n3-i7\n";
 char mensagemRamPortatil[] = "RAM do portatil (em gigabytes)";
 //char mensagemEstadoPortatil[] = "\nEstado do Portatil: \n1-Disponivel\n2-Indisponivel\n";
@@ -188,6 +188,13 @@ int procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortatei
     int i,pos;
     pos = -1;
 
+    if (numeroIdentificacao == -1 )
+    {
+
+       // printf("Insira o numero de identificacao\n");
+        numeroIdentificacao = lerInteiro(mensagemNumeroIdentificacaoPortatil,1, 99999);
+    }
+
     if (quantidadePortateisRegistados == 0)
     {
         printf("Nao existem portateis registados\n");
@@ -204,13 +211,18 @@ int procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortatei
             }
         }
     }
+    if (pos == -1){
+        printf("Nao foi possivel encontrar um portatil com esse numero de identificacao\n\n");
+    }
     return pos;
 }
 
-void alterarLocalizacaoPortatil(tipoPortatil vetor[], int quantidadePortateisRegistados)
+void alterarLocalizacaoPortatil(tipoPortatil vetorPortateis[], int quantidadePortateisRegistados)
 {
-//   printf("");
-//    procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortateisRegistados, int numeroIdentificacao)
-
-
+    int pos;
+    pos = procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados,-1);
+    if (pos != -1)
+    {
+       vetorPortateis[pos].localizacaoPortatil = lerInteiro(mensagemLocalizacaoPortatil,1,4);
+    }
 }
