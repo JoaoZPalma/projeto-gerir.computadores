@@ -64,7 +64,7 @@ int main()
             pos=-1;
             do{
                 numeroIdentificacao = lerInteiro(mensagemPedirNumeroIdentificaoPortatil,1,99999);
-                pos = procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados, numeroIdentificacao);
+                pos = procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados,numeroIdentificacao);
                 if (pos != -1)
                 {
                     mostrarInformacaoPortatilPorPosicao(vetorPortateis, pos);

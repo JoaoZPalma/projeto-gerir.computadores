@@ -23,31 +23,62 @@ int quantidadePortateisRegistados,quantidadePortateisIndisponiveis;
 void registarPortatil(tipoPortatil vetorPortateis[],int quantidadePortateisRegistados)
 {
     int i, pos;
+    pos = -1;
     printf("Insira agora os dados de registo do computador em causa:");
-    vetorPortateis[quantidadePortateisRegistados].identificacao = lerInteiro(mensagemNumeroIdentificacaoPortatil,1,99999);
-    quantidadePortateisRegistados++;
 
-//    for(i=0; i<quantidadePortateisRegistados; i++)
-//    {
-//        pos = procurarPortatilPorIdentificacao(vetorPortateis[i],quantidadePortateisRegistados,vetorPortateis[quantidadePortateisRegistados].identificacao);
-//
-//    }
-            vetorPortateis[quantidadePortateisRegistados].processador = lerInteiro(mensagemProcessadorPortatil,1,3);
-            vetorPortateis[quantidadePortateisRegistados].ram = menuRAM();
-            vetorPortateis[quantidadePortateisRegistados].estadoPortatil = 1;
-            vetorPortateis[quantidadePortateisRegistados].localizacaoPortatil = lerInteiro(mensagemLocalizacaoPortatil,1,4);
-            vetorPortateis[quantidadePortateisRegistados].dataAquisicao = lerData();
-            vetorPortateis[quantidadePortateisRegistados].valor = lerFloat(mensagemValorPortatil,1.0,999999.99);
-            vetorPortateis[quantidadePortateisRegistados].quantidadeAvarias = 0;
-            vetorPortateis[quantidadePortateisRegistados].quantidadeRequisicoes = 0;
 
-    if (vetorPortateis[quantidadePortateisRegistados].estadoPortatil==2)
+
+    do
     {
-        quantidadePortateisIndisponiveis++;
+        vetorPortateis[quantidadePortateisRegistados].identificacao = lerInteiro(mensagemNumeroIdentificacaoPortatil,1,99999);
+        pos = procurarPortatilPorIdentificacao(vetorPortateis, quantidadePortateisRegistados, vetorPortateis[quantidadePortateisRegistados].identificacao);
+        if (pos !=-1)
+        {
+            printf("Esse computador ja se encontra registado");
+        }
     }
-//    vetor[quantidadePortateisRegistados].quantidadeAvarias = lerInteiro(mensagemQuantidadeAvariasPortatil,0,9999);
-//    vetor[quantidadePortateisRegistados].quantidadeRequisicoes = lerInteiro(mensagemQuantidadeRequisicoesPortatil,0,9999);
-    //quantidadeComputadoresRegistados++;
+    while(pos != -1);
+    vetorPortateis[quantidadePortateisRegistados].processador = lerInteiro(mensagemProcessadorPortatil,1,3);
+    vetorPortateis[quantidadePortateisRegistados].ram = menuRAM();
+    vetorPortateis[quantidadePortateisRegistados].estadoPortatil = 1;
+    vetorPortateis[quantidadePortateisRegistados].localizacaoPortatil = lerInteiro(mensagemLocalizacaoPortatil,1,4);
+    vetorPortateis[quantidadePortateisRegistados].dataAquisicao = lerData();
+    vetorPortateis[quantidadePortateisRegistados].valor = lerFloat(mensagemValorPortatil,1.0,999999.99);
+    vetorPortateis[quantidadePortateisRegistados].quantidadeAvarias = 0;
+    vetorPortateis[quantidadePortateisRegistados].quantidadeRequisicoes = 0;
+    quantidadePortateisRegistados++;
+//        if (quantidadePortateisRegistados!=0)
+//        {
+//
+//
+//            else
+//            {
+//
+//                vetorPortateis[quantidadePortateisRegistados].processador = lerInteiro(mensagemProcessadorPortatil,1,3);
+//                vetorPortateis[quantidadePortateisRegistados].ram = menuRAM();
+//                vetorPortateis[quantidadePortateisRegistados].estadoPortatil = 1;
+//                vetorPortateis[quantidadePortateisRegistados].localizacaoPortatil = lerInteiro(mensagemLocalizacaoPortatil,1,4);
+//                vetorPortateis[quantidadePortateisRegistados].dataAquisicao = lerData();
+//                vetorPortateis[quantidadePortateisRegistados].valor = lerFloat(mensagemValorPortatil,1.0,999999.99);
+//                vetorPortateis[quantidadePortateisRegistados].quantidadeAvarias = 0;
+//                vetorPortateis[quantidadePortateisRegistados].quantidadeRequisicoes = 0;
+//                quantidadePortateisRegistados++;
+//            }
+//        }
+//
+//        else
+//        {
+//
+//            vetorPortateis[quantidadePortateisRegistados].processador = lerInteiro(mensagemProcessadorPortatil,1,3);
+//            vetorPortateis[quantidadePortateisRegistados].ram = menuRAM();
+//            vetorPortateis[quantidadePortateisRegistados].estadoPortatil = 1;
+//            vetorPortateis[quantidadePortateisRegistados].localizacaoPortatil = lerInteiro(mensagemLocalizacaoPortatil,1,4);
+//            vetorPortateis[quantidadePortateisRegistados].dataAquisicao = lerData();
+//            vetorPortateis[quantidadePortateisRegistados].valor = lerFloat(mensagemValorPortatil,1.0,999999.99);
+//            vetorPortateis[quantidadePortateisRegistados].quantidadeAvarias = 0;
+//            vetorPortateis[quantidadePortateisRegistados].quantidadeRequisicoes = 0;
+//            quantidadePortateisRegistados++;
+//        }
 
 }
 void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int posicao)
@@ -163,7 +194,7 @@ int procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortatei
     }
     else
     {
-        for(i=0; i<MAX_PORTATEIS; i++)
+        for(i=0; i<quantidadePortateisRegistados; i++)
         {
 
             if (numeroIdentificacao==vetor[i].identificacao)
@@ -171,13 +202,9 @@ int procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortatei
                 pos = i;
                 i = quantidadePortateisRegistados;
             }
-
         }
-
     }
-
     return pos;
-
 }
 
 void alterarLocalizacaoPortatil(tipoPortatil vetor[], int quantidadePortateisRegistados)
