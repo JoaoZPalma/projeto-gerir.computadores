@@ -9,7 +9,7 @@
 
 typedef struct
 {
-    int identificacao, processador, ram, estadoPortatil, localizacaoPortatil, quantidadeAvarias, quantidadeRequisicoes, totalDiasRequisicao;
+    int identificacao, processador, ram, estadoPortatil, localizacaoPortatil, quantidadeAvarias, quantidadeRequisicoes;
     char designacao[15];
     tipoData dataAquisicao;
     float valor;
