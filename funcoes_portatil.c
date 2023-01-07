@@ -4,7 +4,7 @@
 #include "funcoes_auxiliares1.h"
 #include "funcoes_portatil.h"
 
-char mensagemNumeroIdentificacaoPortatil[] = "\nNumero de Identificacao";
+char mensagemNumeroIdentificacaoPortatil[] = "\nNumero de Identificacao do portatil: ";
 char mensagemProcessadorPortatil[] = "\nProcessador: \n1-i3\n2-i5\n3-i7\n";
 char mensagemRamPortatil[] = "RAM do portatil (em gigabytes)";
 //char mensagemEstadoPortatil[] = "\nEstado do Portatil: \n1-Disponivel\n2-Indisponivel\n";
@@ -20,27 +20,65 @@ int quantidadePortateisRegistados,quantidadePortateisIndisponiveis;
 
 
 
-void registarPortatil(tipoPortatil vetor[],int quantidadePortateisRegistados)
+void registarPortatil(tipoPortatil vetorPortateis[],int quantidadePortateisRegistados)
 {
+    int i, pos;
+    pos = -1;
     printf("Insira agora os dados de registo do computador em causa:");
-    vetor[quantidadePortateisRegistados].identificacao = lerInteiro(mensagemNumeroIdentificacaoPortatil,1,99999);
-//    if (vetor[quantidadePortateisRegistados].identificacao == )
-    vetor[quantidadePortateisRegistados].processador = lerInteiro(mensagemProcessadorPortatil,1,3);
-    vetor[quantidadePortateisRegistados].ram = menuRAM();
-    vetor[quantidadePortateisRegistados].estadoPortatil = 1;
-    vetor[quantidadePortateisRegistados].localizacaoPortatil = lerInteiro(mensagemLocalizacaoPortatil,1,4);
-    vetor[quantidadePortateisRegistados].dataAquisicao = lerData();
-    vetor[quantidadePortateisRegistados].valor = lerFloat(mensagemValorPortatil,1.0,999999.99);
-    vetor[quantidadePortateisRegistados].quantidadeAvarias = 0;
-    vetor[quantidadePortateisRegistados].quantidadeRequisicoes = 0;
-    quantidadePortateisRegistados++;
-    if (vetor[quantidadePortateisRegistados].estadoPortatil==2)
+
+
+
+    do
     {
-        quantidadePortateisIndisponiveis++;
+        vetorPortateis[quantidadePortateisRegistados].identificacao = lerInteiro(mensagemNumeroIdentificacaoPortatil,1,99999);
+        pos = procurarPortatilPorIdentificacao(vetorPortateis, quantidadePortateisRegistados, vetorPortateis[quantidadePortateisRegistados].identificacao);
+        if (pos !=-1)
+        {
+            printf("Esse computador ja se encontra registado");
+        }
     }
-//    vetor[quantidadePortateisRegistados].quantidadeAvarias = lerInteiro(mensagemQuantidadeAvariasPortatil,0,9999);
-//    vetor[quantidadePortateisRegistados].quantidadeRequisicoes = lerInteiro(mensagemQuantidadeRequisicoesPortatil,0,9999);
-    //quantidadeComputadoresRegistados++;
+    while(pos != -1);
+    vetorPortateis[quantidadePortateisRegistados].processador = lerInteiro(mensagemProcessadorPortatil,1,3);
+    vetorPortateis[quantidadePortateisRegistados].ram = menuRAM();
+    vetorPortateis[quantidadePortateisRegistados].estadoPortatil = 1;
+    vetorPortateis[quantidadePortateisRegistados].localizacaoPortatil = lerInteiro(mensagemLocalizacaoPortatil,1,4);
+    vetorPortateis[quantidadePortateisRegistados].dataAquisicao = lerData();
+    vetorPortateis[quantidadePortateisRegistados].valor = lerFloat(mensagemValorPortatil,1.0,999999.99);
+    vetorPortateis[quantidadePortateisRegistados].quantidadeAvarias = 0;
+    vetorPortateis[quantidadePortateisRegistados].quantidadeRequisicoes = 0;
+    quantidadePortateisRegistados++;
+//        if (quantidadePortateisRegistados!=0)
+//        {
+//
+//
+//            else
+//            {
+//
+//                vetorPortateis[quantidadePortateisRegistados].processador = lerInteiro(mensagemProcessadorPortatil,1,3);
+//                vetorPortateis[quantidadePortateisRegistados].ram = menuRAM();
+//                vetorPortateis[quantidadePortateisRegistados].estadoPortatil = 1;
+//                vetorPortateis[quantidadePortateisRegistados].localizacaoPortatil = lerInteiro(mensagemLocalizacaoPortatil,1,4);
+//                vetorPortateis[quantidadePortateisRegistados].dataAquisicao = lerData();
+//                vetorPortateis[quantidadePortateisRegistados].valor = lerFloat(mensagemValorPortatil,1.0,999999.99);
+//                vetorPortateis[quantidadePortateisRegistados].quantidadeAvarias = 0;
+//                vetorPortateis[quantidadePortateisRegistados].quantidadeRequisicoes = 0;
+//                quantidadePortateisRegistados++;
+//            }
+//        }
+//
+//        else
+//        {
+//
+//            vetorPortateis[quantidadePortateisRegistados].processador = lerInteiro(mensagemProcessadorPortatil,1,3);
+//            vetorPortateis[quantidadePortateisRegistados].ram = menuRAM();
+//            vetorPortateis[quantidadePortateisRegistados].estadoPortatil = 1;
+//            vetorPortateis[quantidadePortateisRegistados].localizacaoPortatil = lerInteiro(mensagemLocalizacaoPortatil,1,4);
+//            vetorPortateis[quantidadePortateisRegistados].dataAquisicao = lerData();
+//            vetorPortateis[quantidadePortateisRegistados].valor = lerFloat(mensagemValorPortatil,1.0,999999.99);
+//            vetorPortateis[quantidadePortateisRegistados].quantidadeAvarias = 0;
+//            vetorPortateis[quantidadePortateisRegistados].quantidadeRequisicoes = 0;
+//            quantidadePortateisRegistados++;
+//        }
 
 }
 void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int posicao)
@@ -150,13 +188,20 @@ int procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortatei
     int i,pos;
     pos = -1;
 
+    if (numeroIdentificacao == -1 )
+    {
+
+       // printf("Insira o numero de identificacao\n");
+        numeroIdentificacao = lerInteiro(mensagemNumeroIdentificacaoPortatil,1, 99999);
+    }
+
     if (quantidadePortateisRegistados == 0)
     {
         printf("Nao existem portateis registados\n");
     }
     else
     {
-        for(i=0; i<MAX_PORTATEIS; i++)
+        for(i=0; i<quantidadePortateisRegistados; i++)
         {
 
             if (numeroIdentificacao==vetor[i].identificacao)
@@ -164,19 +209,21 @@ int procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortatei
                 pos = i;
                 i = quantidadePortateisRegistados;
             }
-
         }
-
     }
-
+    if (pos == -1){
+        printf("Nao foi possivel encontrar um portatil com esse numero de identificacao\n\n");
+    }
     return pos;
-
 }
 
-void alterarLocalizacaoPortatil(tipoPortatil vetor[], int quantidadePortateisRegistados)
+int alterarLocalizacaoPortatil(tipoPortatil vetorPortateis[], int quantidadePortateisRegistados)
 {
- //   printf("");
-//    procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortateisRegistados, int numeroIdentificacao)
-
-
+    int pos;
+    pos = procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados,-1);
+    if (pos != -1)
+    {
+       vetorPortateis[pos].localizacaoPortatil = lerInteiro(mensagemLocalizacaoPortatil,1,4);
+    }
+    return pos;
 }

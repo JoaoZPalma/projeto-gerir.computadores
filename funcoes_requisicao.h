@@ -1,5 +1,5 @@
-#ifndef FUNCOES_AUXILIARES_H_INCLUDED
-#define FUNCOES_AUXILIARES_H_INCLUDED
+#ifndef FUNCOES_REQUISICAO_H_INCLUDED
+#define FUNCOES_REQUISICAO_H_INCLUDED
 
 #include "constantes1.h"
 #include "funcoes_auxiliares1.h"

@@ -111,9 +111,9 @@ void gravaFicheiroBinario(void)
         printf("Erro ao salvar o ficheiro");
     }
     else
-        {
-       // elementosEscritos = fwrite(vetor[],sizeof(variavel))
-        }
+    {
+        // elementosEscritos = fwrite(vetor[],sizeof(variavel))
+    }
 }
 
 
@@ -121,11 +121,11 @@ tipoData lerData(void)
 {
     tipoData data;
     int maxDiasMes;
-    char mensagemDataAno[] = ("\nInsira a o ano: ");
-    char mensagemDataMes[] = ("\nInsira o mes:");
-    char mensagemDataDia[] = ("\nInsira o dia:");
+    char mensagemDataAno[] = "\nInsira a o ano: ";
+    char mensagemDataMes[] = "\nInsira o mes:";
+    char mensagemDataDia[] = "\nInsira o dia:";
 
-    data.ano = lerInteiro(mensagemDataAno,2000, 2022);
+    data.ano = lerInteiro(mensagemDataAno,MIN_ANO, MAX_ANO);
     data.mes = lerInteiro(mensagemDataMes,1, 12);
 
     switch (data.mes)
@@ -153,4 +153,53 @@ tipoData lerData(void)
     data.dia = lerInteiro(mensagemDataDia,1, maxDiasMes);
 
     return data;
+}
+int transformaData (tipoData data)
+{
+    int i, diasAno, diasMes, diasTotal;
+    diasAno = 365 * (data.ano - MIN_ANO);
+    for (i = MIN_ANO; i<= data.ano; i++)
+    {
+        if ((i % 400 == 0) || (i % 4 == 0 && i % 100 != 0))
+        {
+            diasAno++;
+        }
+    }
+    diasMes = 0;
+    for (i = 0; i < data.mes; i++)
+    {
+        switch(i)
+        {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+            diasMes += 31;
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            diasMes += 30;
+            break;
+        case 2:
+            if ((data.ano % 400 == 0) || (data.ano % 4 == 0 && data.ano % 100 != 0))
+            {
+                diasMes += 29;
+            }
+            else
+            {
+                diasMes += 28;
+            }
+            break;
+        }
+    }
+    diasTotal = data.dia + diasAno + diasMes;
+    printf("\n\n %d \n\n", diasMes);
+    printf("\n\n %d \n\n", diasAno);
+    printf("\n\n %d \n\n", data.dia);
+
+    return diasTotal;
 }

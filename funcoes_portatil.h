@@ -9,7 +9,7 @@
 
 typedef struct
 {
-    int identificacao, processador, ram, estadoPortatil, localizacaoPortatil, quantidadeAvarias, quantidadeRequisicoes;
+    int identificacao, processador, ram, estadoPortatil, localizacaoPortatil, quantidadeAvarias, quantidadeRequisicoes, totalDiasRequisicao;
     char designacao[15];
     tipoData dataAquisicao;
     float valor;
@@ -23,7 +23,7 @@ void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int posicao);
 int menuRegistoPortatil();
 int menuRAM();
 int procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortateisRegistados, int numeroIdentificacao);
-void alterarLocalizacaoPortatil(tipoPortatil vetor[], int quantidadePortateisRegistados);
+int alterarLocalizacaoPortatil(tipoPortatil vetor[], int quantidadePortateisRegistados);
 
 
 #endif
