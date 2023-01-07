@@ -6,20 +6,20 @@
 #include "funcoes_portatil.h"
 #include "funcoes_requisicao.h"
 
-int menuPrincipal(int quantidadePortateisRegistados, int quantidadePortateisRequisicoes, int quantidadePortateisRequisicoesAtivas, int quantidadePortateisIndisponiveis);
+int menuPrincipal(int quantidadePortateisRegistados, int quantidadeRequisicoes, int quantidadeRequisicoesAtivas, int quantidadePortateisIndisponiveis);
 char mensagemRepetir[]="Deseja repetir o procedimento?";
 char mensagemPedirNumeroIdentificaoPortatil[] = "Insira o numero de identificao do portatil:\t";
+char mensagemIdRequisicao[]="Por favor introduza o id do portatil que quer requisitar\n";
 
 int main()
 {
     int quantidadePortateisRegistados = 0;
-    int quantidadePortateisRequisicoes = 0;
+    int quantidadeRequisicoes = 0;
     int quantidadePortateisIndisponiveis = 0;
-    int quantidadePortateisRequisicoesAtivas = 0;
+    int quantidadeRequisicoesAtivas = 0;
     int repetir=0;
-    int numeroIdentificacao;
 
-    int opcaoPrincipal, quantidadePortateisDisponiveis, opcaoRegisto, i, numeroIdentificao,pos;
+    int opcaoPrincipal, quantidadePortateisDisponiveis, opcaoRegisto, i, pos, idRequisicao;
     tipoPortatil vetorPortateis[MAX_PORTATEIS];
 
     do
@@ -27,7 +27,7 @@ int main()
 
 
 
-        opcaoPrincipal = menuPrincipal(quantidadePortateisRegistados, quantidadePortateisRequisicoes, quantidadePortateisRequisicoesAtivas, quantidadePortateisIndisponiveis);
+        opcaoPrincipal = menuPrincipal(quantidadePortateisRegistados, quantidadeRequisicoes, quantidadeRequisicoesAtivas, quantidadePortateisIndisponiveis);
         switch (opcaoPrincipal)
         {
         case 1: //Realizar registo de 1 computador
@@ -39,9 +39,9 @@ int main()
                 case 1:
                     registarPortatil(vetorPortateis,quantidadePortateisRegistados);
                     if (vetorPortateis[quantidadePortateisRegistados].estadoPortatil==2)
-                        {
-                            quantidadePortateisIndisponiveis++;
-                        }
+                    {
+                        quantidadePortateisIndisponiveis++;
+                    }
                     quantidadePortateisRegistados++;
                     break;
                 case 2:
@@ -61,8 +61,12 @@ int main()
             while(opcaoRegisto != 0);
             break;
         case 2:
+            alterarLocalizacaoPortatil(vetorPortateis,quantidadePortateisRegistados);
+            break;
+        case 3:
             pos=-1;
-            do{
+            do
+            {
 //                numeroIdentificacao = lerInteiro(mensagemPedirNumeroIdentificaoPortatil,1,99999);
 //                pos = procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados,numeroIdentificacao);
                 pos= procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados,-1);
@@ -77,12 +81,38 @@ int main()
                     printf("Deseja tentar novamente? \n1- SIM\n2- NAO\n");
                     repetir = lerInteiro(mensagemRepetir,1,2);
                 }
-            }while((repetir==1) &&( pos==-1));
-            break;
-        case 3:
-            alterarLocalizacaoPortatil(vetorPortateis,quantidadePortateisRegistados);
+            }
+            while((repetir==1) &&( pos==-1));
             break;
         case 4:
+            do
+            {
+                idRequisicao = lerInteiro(mensagemIdRequisicao, MIN_ID, MAX_ID);
+                pos= procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados,idRequisicao);
+                if (pos != -1)
+                {
+                    mostrarInformacaoPortatilPorPosicao(vetorPortateis, pos);
+
+                }
+                else
+                {
+                    printf("Deseja tentar novamente? \n1- SIM\n2- NAO\n");
+                    repetir = lerInteiro(mensagemRepetir,1,2);
+                }
+            }
+            while((repetir==1) &&( pos==-1));
+
+            int *vetorRequisicoes;
+            vetorRequisicoes = NULL;
+            vetorRequisicoes = realloc(vetorRequisicoes,quantidadeRequisicoes*sizeof(tipoRequisicao));
+            if (vetorRequisicoes == NULL)
+            {
+                printf("Memória insuficiente");
+            }
+
+
+
+
             break;
         case 5:
             break;
@@ -113,16 +143,17 @@ int main()
     return 0;
 }
 
-int menuPrincipal(int quantidadePortateisRegistados, int quantidadePortateisRequisicoes, int quantidadePortateisRequisicoesAtivas, int quantidadePortateisIndisponiveis)
+int menuPrincipal(int quantidadePortateisRegistados, int quantidadeRequisicoes, int quantidadeRequisicoesAtivas, int quantidadePortateisIndisponiveis)
 {
 
     int opcao, quantidadePortateisDisponiveis;//, quantidadePortateisDisponiveis,quantidadePortateisRegistados,quantidadePortateisRequisitados,quantidadePortateisAvariados;
-    quantidadePortateisDisponiveis = quantidadePortateisRegistados-quantidadePortateisRequisicoesAtivas-quantidadePortateisIndisponiveis;
-    printf("Quantidade de portateis existentes: %d\t\t Quantidade de requisicoes totais: %d\n", quantidadePortateisRegistados, quantidadePortateisRequisicoes);
-    printf("Quantidade de portateis disponiveis: %d\t\t Quantidade de requisicoes ativas: %d\n", quantidadePortateisDisponiveis, quantidadePortateisRequisicoesAtivas);
+    quantidadePortateisDisponiveis = quantidadePortateisRegistados-quantidadeRequisicoesAtivas-quantidadePortateisIndisponiveis;
+    printf("Quantidade de portateis existentes: %d\t\t Quantidade de requisicoes totais: %d\n", quantidadePortateisRegistados, quantidadeRequisicoes);
+    printf("Quantidade de portateis disponiveis: %d\t\t Quantidade de requisicoes ativas: %d\n", quantidadePortateisDisponiveis, quantidadeRequisicoesAtivas);
     printf("1 - Registar computador\n");
-    printf("2 - Procurar portatil por numero de identificao\n");
-    printf("3 - Alterar posicao portatil\n");
+    printf("2 - Alterar posicao portatil\n");
+    printf("3 - Procurar portatil por numero de identificao\n");
+
 
     printf("Opcao: ");
 
