@@ -84,7 +84,7 @@
 	"funcoes_auxiliares1.h"
 	"funcoes_portatil.h"
 
-1673104550 source:c:\users\drudo\desktop\wa\funcoes_auxiliares1.c
+1673117857 source:c:\users\drudo\desktop\wa\funcoes_auxiliares1.c
 	<stdio.h>
 	<string.h>
 	"funcoes_auxiliares1.h"
@@ -94,7 +94,7 @@
 
 1673104550 c:\users\drudo\desktop\wa\constantes1.h
 
-1673105896 source:c:\users\drudo\desktop\wa\funcoes_requisicao.c
+1673118345 source:c:\users\drudo\desktop\wa\funcoes_requisicao.c
 	<stdio.h>
 	<string.h>
 	"funcoes_auxiliares1.h"
@@ -110,11 +110,12 @@
 1673105009 c:\users\drudo\desktop\wa\funcoes_portatil.h
 	"funcoes_auxiliares1.h"
 
-1673105130 c:\users\drudo\desktop\wa\funcoes_requisicao.h
+1673118364 c:\users\drudo\desktop\wa\funcoes_requisicao.h
 	"constantes1.h"
 	"funcoes_auxiliares1.h"
+	"funcoes_portatil.h"
 
-1673105009 source:c:\users\drudo\desktop\wa\main.c
+1673117783 source:c:\users\drudo\desktop\wa\main.c
 	<stdio.h>
 	<stdlib.h>
 	"constantes1.h"

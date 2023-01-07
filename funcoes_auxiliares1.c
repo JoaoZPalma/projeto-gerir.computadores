@@ -121,7 +121,7 @@ tipoData lerData(void)
 {
     tipoData data;
     int maxDiasMes;
-    char mensagemDataAno[] = "\nInsira a o ano: ";
+    char mensagemDataAno[] = "\nInsira o ano: ";
     char mensagemDataMes[] = "\nInsira o mes:";
     char mensagemDataDia[] = "\nInsira o dia:";
 
@@ -197,9 +197,9 @@ int transformaData (tipoData data)
         }
     }
     diasTotal = data.dia + diasAno + diasMes;
-    printf("\n\n %d \n\n", diasMes);
-    printf("\n\n %d \n\n", diasAno);
-    printf("\n\n %d \n\n", data.dia);
+//    printf("\n\n %d \n\n", diasMes);
+//    printf("\n\n %d \n\n", diasAno);
+//    printf("\n\n %d \n\n", data.dia);
 
     return diasTotal;
 }

@@ -3,6 +3,7 @@
 
 #include "constantes1.h"
 #include "funcoes_auxiliares1.h"
+#include "funcoes_portatil.h"
 
 typedef struct
 {
@@ -12,5 +13,9 @@ typedef struct
     float multa;
 
 }tipoRequisicao;
+
+void requisitarPortatil(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes,tipoPortatil vetorPortateis[],int pos,tipoData dataAtual);
+//tipoData calculaDataDevolucao(tipoData dataRequisicao, int prazoRequisicao);
+
 
 #endif

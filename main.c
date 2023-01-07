@@ -18,10 +18,15 @@ int main()
     int quantidadePortateisIndisponiveis = 0;
     int quantidadeRequisicoesAtivas = 0;
     int repetir=0;
+    int *vetorRequisicoes;
+    vetorRequisicoes = NULL;
 
     int opcaoPrincipal, quantidadePortateisDisponiveis, opcaoRegisto, i, pos, idRequisicao;
     tipoPortatil vetorPortateis[MAX_PORTATEIS];
 
+    tipoData dataAtual;
+    printf("Insira a data atual\n");
+    dataAtual = lerData();
     do
     {
 
@@ -103,17 +108,17 @@ int main()
             }
             while((repetir==1) &&( pos==-1));
 
-            int *vetorRequisicoes;
-            vetorRequisicoes = NULL;
+
             vetorRequisicoes = realloc(vetorRequisicoes,quantidadeRequisicoes*sizeof(tipoRequisicao));
             if (vetorRequisicoes == NULL)
             {
                 printf("Memória insuficiente");
             }
 
+            requisitarPortatil(vetorRequisicoes,quantidadeRequisicoes,vetorPortateis,pos,dataAtual);
 
 
-
+            free(vetorRequisicoes);
             break;
         case 5:
             break;
@@ -149,12 +154,12 @@ int menuPrincipal(int quantidadePortateisRegistados, int quantidadeRequisicoes, 
 
     int opcao, quantidadePortateisDisponiveis;//, quantidadePortateisDisponiveis,quantidadePortateisRegistados,quantidadePortateisRequisitados,quantidadePortateisAvariados;
     quantidadePortateisDisponiveis = quantidadePortateisRegistados-quantidadeRequisicoesAtivas-quantidadePortateisIndisponiveis;
-    printf("Quantidade de portateis existentes: %d\t\t Quantidade de requisicoes totais: %d\n", quantidadePortateisRegistados, quantidadeRequisicoes);
+    printf("\nQuantidade de portateis existentes: %d\t\t Quantidade de requisicoes totais: %d\n", quantidadePortateisRegistados, quantidadeRequisicoes);
     printf("Quantidade de portateis disponiveis: %d\t\t Quantidade de requisicoes ativas: %d\n", quantidadePortateisDisponiveis, quantidadeRequisicoesAtivas);
     printf("1 - Registar computador\n");
     printf("2 - Alterar posicao portatil\n");
     printf("3 - Procurar portatil por numero de identificao\n");
-
+    printf("4 - Realizar requisicao de portatil\n");
 
     printf("Opcao: ");
 
