@@ -16,6 +16,7 @@ typedef struct
 
 void requisitarPortatil(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes,tipoPortatil vetorPortateis[],int pos,tipoData dataAtual);
 //tipoData calculaDataDevolucao(tipoData dataRequisicao, int prazoRequisicao);
+int procurarRequisicaoPorCodigo(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes, char codigo[]);
 
 
 #endif

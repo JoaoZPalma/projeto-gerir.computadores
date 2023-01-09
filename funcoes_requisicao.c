@@ -7,6 +7,9 @@
 
 char mensagemTipoUtente[] = "\nTipo de utente:\n1-Estudante\n2-Docente\n3-Tecnico Administrativo";
 char mensagemPrazoRequisicao[] = "\nPor quantos dias deseja fazer a requisicao?:";
+char mensagemCodigo[] = "\nInsira o codigo respetivo a requisicao: ";
+char mensagemNome[] = "\nInsira o nome do Utente que pretende realizar a requisicao: ";
+
 
 void requisitarPortatil(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes,tipoPortatil vetorPortateis[],int pos,tipoData dataAtual)
 {
@@ -16,9 +19,11 @@ void requisitarPortatil(tipoRequisicao vetorRequisicoes[],int quantidadeRequisic
     int dataRequisicao = transformaData(dataAtual);
     printf("%d/////%d",dataAquisicao,dataRequisicao);
 //VERIFICAR SE ESTA DISPONIVEL
-   if (dataAquisicao <= dataRequisicao)
+    if (dataAquisicao <= dataRequisicao)
     {
+        lerString(mensagemCodigo,vetorRequisicoes[quantidadeRequisicoes].codigo,MAX_CODIGO);
         vetorRequisicoes[quantidadeRequisicoes].identificacaoPortatil = vetorPortateis[pos].identificacao;
+        lerString(mensagemNome,vetorRequisicoes[quantidadeRequisicoes].nome,MAX_STRING);
         vetorRequisicoes[quantidadeRequisicoes].tipoUtente = lerInteiro(mensagemTipoUtente,1,3);
         vetorRequisicoes[quantidadeRequisicoes].prazoRequisicao = lerInteiro(mensagemPrazoRequisicao,1,30);
         vetorRequisicoes[quantidadeRequisicoes].dataDevolucao.ano = -1;
@@ -27,15 +32,75 @@ void requisitarPortatil(tipoRequisicao vetorRequisicoes[],int quantidadeRequisic
         vetorRequisicoes[quantidadeRequisicoes].estadoRequisicao = 1;
         vetorRequisicoes[quantidadeRequisicoes].localDevolucao = -1; //1- Ativa, 2- Concluida
         vetorRequisicoes[quantidadeRequisicoes].multa = 0;
-  //      vetorRequisicoes[quantidadeRequisicoes].dataDevolucao =
- //           vetorRequisicoes[quantidadeRequisicoes].
-  //          vetorRequisicoes[quantidadeRequisicoes].
+        //      vetorRequisicoes[quantidadeRequisicoes].dataDevolucao =
+//           vetorRequisicoes[quantidadeRequisicoes].
+        //          vetorRequisicoes[quantidadeRequisicoes].
 
     }
 
 
 
 }
+
+
+int procurarRequisicaoPorCodigo(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes, char codigo[])
+{
+    int i,pos;
+    pos = -1;
+
+    if (codigo==-1)
+    {
+
+        // printf("Insira o numero de identificacao\n");
+        lerString(mensagemCodigo,codigo,MAX_CODIGO);
+    }
+    if (quantidadeRequisicoes == 0)
+    {
+        printf("Nao existem requisicoes efetuadas\n");
+    }
+    else
+    {
+        for(i=0; i<quantidadeRequisicoes; i++)
+        {
+
+            if (strcmp(codigo[MAX_CODIGO],vetorRequisicoes->codigo==0))
+            {
+                pos = i;
+                i = quantidadeRequisicoes;
+            }
+            else
+            {
+                printf("Nao foi possivel encontrar a requisicao com o codigo que disponibilizou\n\n");
+            }
+        }
+    }
+    return pos;
+}
+
+
+//void devolucao(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes)
+//{
+//
+//
+//
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //tipoData calculaDataDevolucao(tipoData dataRequisicao, int prazoRequisicao)
 //{

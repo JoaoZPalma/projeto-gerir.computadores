@@ -99,6 +99,16 @@ int main()
                 {
                     mostrarInformacaoPortatilPorPosicao(vetorPortateis, pos);
 
+                    vetorRequisicoes = realloc(vetorRequisicoes,quantidadeRequisicoes*sizeof(tipoRequisicao));
+                    if (vetorRequisicoes == NULL)
+                    {
+                        printf("Memória insuficiente");
+                    }
+
+                    requisitarPortatil(vetorRequisicoes,quantidadeRequisicoes,vetorPortateis,pos,dataAtual);
+
+
+
                 }
                 else
                 {
@@ -107,20 +117,9 @@ int main()
                 }
             }
             while((repetir==1) &&( pos==-1));
-
-
-            vetorRequisicoes = realloc(vetorRequisicoes,quantidadeRequisicoes*sizeof(tipoRequisicao));
-            if (vetorRequisicoes == NULL)
-            {
-                printf("Memória insuficiente");
-            }
-
-            requisitarPortatil(vetorRequisicoes,quantidadeRequisicoes,vetorPortateis,pos,dataAtual);
-
-
-            free(vetorRequisicoes);
             break;
         case 5:
+            procurarRequisicaoPorCodigo(vetorRequisicoes,quantidadeRequisicoes,-1);
             break;
         case 6:
             break;
@@ -145,7 +144,7 @@ int main()
 
     }
     while(opcaoPrincipal != 0);
-
+    free(vetorRequisicoes);
     return 0;
 }
 
