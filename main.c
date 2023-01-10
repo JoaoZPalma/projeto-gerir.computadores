@@ -23,12 +23,13 @@ int main()
     int repetir=0;
     int *vetorRequisicoes;
     vetorRequisicoes = NULL;
+    FILE *ficheiro;
 
 
     char mensagemCodigo[] = "\nInsira o codigo respetivo a requisicao: ";
     char codigo[MAX_CODIGO];
 
-    int opcaoPrincipal, quantidadePortateisDisponiveis, opcaoRegisto, i, pos, idRequisicao;
+    int opcaoPrincipal, quantidadePortateisDisponiveis, opcaoRegisto, i, pos, idRequisicao, opcaoFicheiros, erro;
     tipoPortatil vetorPortateis[MAX_PORTATEIS];
 
     tipoData dataAtual;
@@ -112,7 +113,7 @@ int main()
                         vetorRequisicoes = realloc(vetorRequisicoes,(quantidadeRequisicoes+1)*sizeof(tipoRequisicao));
                         if (vetorRequisicoes == NULL)
                         {
-                            printf("Mem�ria insuficiente");
+                            printf("Memória insuficiente");
                         }
 
                         requisitarPortatil(vetorRequisicoes,quantidadeRequisicoes,vetorPortateis,pos,dataAtual);
@@ -144,7 +145,85 @@ int main()
             break;
         case 7:
             break;
-        case 8:
+        case 8:   
+            do
+            {
+                opcaoFicheiros = menuFicheiros();
+                switch (opcaoFicheiros)
+                {
+                case 1:
+                    ficheiro = fopen("portateis.dat", "wb");
+                    if (ficheiro == NULL)
+                    {
+                        printf ("Ficheiro não Existe!!");
+                    }
+                    else
+                    {
+                        fwrite(&quantidadePortateisRegistados,sizeof(int),1,ficheiro);
+                        fwrite(vetorPortateis,sizeof(tipoPortatil),quantidadePortateisRegistados,ficheiro);
+                        erro = fclose(ficheiro);
+                        if (erro != 0)
+                        {
+                            printf ("Erro %d no fecho ficheiro", erro);
+                        }
+                    }
+                    break;
+                case 2:
+                    ficheiro = fopen("portateis.dat", "rb");
+                    if (ficheiro == NULL)
+                    {
+                        printf ("Ficheiro não Existe!!");
+                    }
+                    else
+                    {
+                        fread(&quantidadePortateisRegistados,sizeof(int),1,ficheiro);
+                        fread(vetorPortateis,sizeof(tipoPortatil),quantidadePortateisRegistados,ficheiro);
+                        erro = fclose(ficheiro);
+                        if (erro != 0)
+                        {
+                            printf ("Erro %d no fecho ficheiro", erro);
+                        }
+                    }
+                    break;
+                case 3:
+                    ficheiro = fopen("requisicoes.dat", "wb");
+                    if (ficheiro == NULL)
+                    {
+                        printf ("Ficheiro não Existe!!");
+                    }
+                    else
+                    {
+                        fwrite(&quantidadeRequisicoes,sizeof(int),1,ficheiro);
+                        fwrite(vetorRequisicoes,sizeof(tipoRequisicao),quantidadeRequisicoes,ficheiro);
+                        erro = fclose(ficheiro);
+                        if (erro != 0)
+                        {
+                            printf ("Erro %d no fecho ficheiro", erro);
+                        }
+                    }
+                    break;
+                case 4:
+                    ficheiro = fopen("requisicoes.dat", "rb");
+                    if (ficheiro == NULL)
+                    {
+                        printf ("Ficheiro não Existe!!");
+                    }
+                    else
+                    {
+                        fread(&quantidadeRequisicoes,sizeof(int),1,ficheiro);
+                        vetorRequisicoes = realloc(vetorRequisicoes,quantidadeRequisicoes*sizeof(tipoRequisicao));
+                        if (vetorRequisicoes == NULL)
+                        {
+                            printf("Memória insuficiente");
+                        }
+                        fread(vetorRequisicoes,sizeof(tipoRequisicao),quantidadeRequisicoes,ficheiro);
+                        erro = fclose(ficheiro);
+                        if (erro != 0)
+                        {
+                            printf ("Erro %d no fecho ficheiro", erro);
+                        }
+                    }
+                    break;
             break;
         case 9:
             break;
