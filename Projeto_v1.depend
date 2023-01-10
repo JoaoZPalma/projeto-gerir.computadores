@@ -94,14 +94,14 @@
 
 1673267845 c:\users\drudo\desktop\wa\constantes1.h
 
-1673271171 source:c:\users\drudo\desktop\wa\funcoes_requisicao.c
+1673372642 source:c:\users\drudo\desktop\wa\funcoes_requisicao.c
 	<stdio.h>
 	<string.h>
 	"funcoes_auxiliares1.h"
 	"funcoes_requisicao.h"
 	"funcoes_portatil.h"
 
-1673105008 source:c:\users\drudo\desktop\wa\funcoes_portatil.c
+1673373812 source:c:\users\drudo\desktop\wa\funcoes_portatil.c
 	<stdio.h>
 	<string.h>
 	"funcoes_auxiliares1.h"
@@ -110,12 +110,12 @@
 1673105009 c:\users\drudo\desktop\wa\funcoes_portatil.h
 	"funcoes_auxiliares1.h"
 
-1673271188 c:\users\drudo\desktop\wa\funcoes_requisicao.h
+1673372284 c:\users\drudo\desktop\wa\funcoes_requisicao.h
 	"constantes1.h"
 	"funcoes_auxiliares1.h"
 	"funcoes_portatil.h"
 
-1673271231 source:c:\users\drudo\desktop\wa\main.c
+1673374907 source:c:\users\drudo\desktop\wa\main.c
 	<stdio.h>
 	<stdlib.h>
 	"constantes1.h"

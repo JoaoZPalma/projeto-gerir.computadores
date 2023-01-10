@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+
 #include "constantes1.h"
 #include "funcoes_auxiliares1.h"
 #include "funcoes_portatil.h"
@@ -11,6 +13,7 @@ char mensagemRepetir[]="Deseja repetir o procedimento?";
 char mensagemPedirNumeroIdentificaoPortatil[] = "Insira o numero de identificao do portatil:\t";
 char mensagemIdRequisicao[]="Por favor introduza o id do portatil que quer requisitar\n";
 
+
 int main()
 {
     int quantidadePortateisRegistados = 0;
@@ -20,6 +23,10 @@ int main()
     int repetir=0;
     int *vetorRequisicoes;
     vetorRequisicoes = NULL;
+
+
+    char mensagemCodigo[] = "\nInsira o codigo respetivo a requisicao: ";
+    char codigo[MAX_CODIGO];
 
     int opcaoPrincipal, quantidadePortateisDisponiveis, opcaoRegisto, i, pos, idRequisicao;
     tipoPortatil vetorPortateis[MAX_PORTATEIS];
@@ -99,16 +106,19 @@ int main()
                 {
                     mostrarInformacaoPortatilPorPosicao(vetorPortateis, pos);
 
-                    vetorRequisicoes = realloc(vetorRequisicoes,quantidadeRequisicoes*sizeof(tipoRequisicao));
-                    if (vetorRequisicoes == NULL)
+                    if (vetorPortateis[pos].estadoPortatil==1)
                     {
-                        printf("Memória insuficiente");
+
+                        vetorRequisicoes = realloc(vetorRequisicoes,(quantidadeRequisicoes+1)*sizeof(tipoRequisicao));
+                        if (vetorRequisicoes == NULL)
+                        {
+                            printf("Memória insuficiente");
+                        }
+
+                        requisitarPortatil(vetorRequisicoes,quantidadeRequisicoes,vetorPortateis,pos,dataAtual);
+                        quantidadeRequisicoes++;
+
                     }
-
-                    requisitarPortatil(vetorRequisicoes,quantidadeRequisicoes,vetorPortateis,pos,dataAtual);
-
-
-
                 }
                 else
                 {
@@ -119,7 +129,16 @@ int main()
             while((repetir==1) &&( pos==-1));
             break;
         case 5:
-            procurarRequisicaoPorCodigo(vetorRequisicoes,quantidadeRequisicoes,-1);
+ //           lerString(mensagemCodigo,codigo,MAX_CODIGO);
+ //           pos = procurarRequisicaoPorCodigo(vetorRequisicoes,quantidadeRequisicoes,codigo);
+//            if (pos!=-1)
+//            {
+//                mostrarRequisicaoPorPosicao(vetorRequisicoes,quantidadeRequisicoes,pos);
+//            }
+            for(i=0;i<quantidadeRequisicoes;i++)
+            {
+                mostrarRequisicaoPorPosicao(vetorRequisicoes,quantidadeRequisicoes,i);
+            }
             break;
         case 6:
             break;

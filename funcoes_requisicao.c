@@ -35,7 +35,7 @@ void requisitarPortatil(tipoRequisicao vetorRequisicoes[],int quantidadeRequisic
         //      vetorRequisicoes[quantidadeRequisicoes].dataDevolucao =
 //           vetorRequisicoes[quantidadeRequisicoes].
         //          vetorRequisicoes[quantidadeRequisicoes].
-
+        //quantidadeRequisicoes++;
     }
 
 
@@ -45,15 +45,13 @@ void requisitarPortatil(tipoRequisicao vetorRequisicoes[],int quantidadeRequisic
 
 int procurarRequisicaoPorCodigo(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes, char codigo[])
 {
-    int i,pos;
-    pos = -1;
-
-    if (codigo==-1)
-    {
-
-        // printf("Insira o numero de identificacao\n");
-        lerString(mensagemCodigo,codigo,MAX_CODIGO);
-    }
+    int i,pos,testar;
+//    if ((strcmp(vetorRequisicoes[]->codigo[MAX_CODIGO],codigo[MAX_CODIGO])==0))
+//    {
+//
+//        // printf("Insira o numero de identificacao\n");
+//        lerString(mensagemCodigo,codigo,MAX_CODIGO);
+//    }
     if (quantidadeRequisicoes == 0)
     {
         printf("Nao existem requisicoes efetuadas\n");
@@ -62,8 +60,10 @@ int procurarRequisicaoPorCodigo(tipoRequisicao vetorRequisicoes[],int quantidade
     {
         for(i=0; i<quantidadeRequisicoes; i++)
         {
+            testar = strcmp(codigo,vetorRequisicoes[i].codigo);
+            //printf("%d",testar);
 
-            if (strcmp(codigo[MAX_CODIGO],vetorRequisicoes->codigo==0))
+            if (testar==0)
             {
                 pos = i;
                 i = quantidadeRequisicoes;
@@ -71,13 +71,74 @@ int procurarRequisicaoPorCodigo(tipoRequisicao vetorRequisicoes[],int quantidade
             else
             {
                 printf("Nao foi possivel encontrar a requisicao com o codigo que disponibilizou\n\n");
+                pos = -1;
             }
         }
     }
+    //printf("%d",pos);
     return pos;
 }
 
+void mostrarRequisicaoPorPosicao(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes,int pos)
+{
+    printf("----------------------------------------------------------------------------------\n");
+    printf("A requisicao de codigo: %s possui os seguintes dados:\n",vetorRequisicoes[pos].codigo);
+    printf("O computador requisitado possui o id: %d\n",vetorRequisicoes[pos].identificacaoPortatil);
+    printf("O nome do utente responsavel pela requisicao: %s\n",vetorRequisicoes[pos].nome);
 
+    switch(vetorRequisicoes[pos].tipoUtente)
+    {
+    case 1:
+        printf("Tipo de utente: Estudante\n");
+        break;
+    case 2:
+        printf("Tipo de utente: Docente\n");
+        break;
+    case 3:
+        printf("Tipo de utente: Tecnico administrativo\n");
+        break;
+    }
+    printf("Data da requisicao : %d/%d/%d\n",vetorRequisicoes[pos].dataRequisicao.dia,vetorRequisicoes[pos].dataRequisicao.mes,vetorRequisicoes[pos].dataRequisicao.ano);
+    printf("O prazo da requisicao (dias): %d\n",vetorRequisicoes[pos].prazoRequisicao);
+    switch(vetorRequisicoes[pos].estadoRequisicao)
+    {
+    case 1:
+        printf("Estado da requisicao: Ativa\n");
+        break;
+    case 2:
+        printf("Estado da requisicao: Concluida\n");
+        break;
+    }
+    switch(vetorRequisicoes[pos].localDevolucao)
+    {
+    case -1:
+        printf("Local da devolucao: --------- \n");
+        break;
+    case 1:
+        printf("Local da devolucao: Campus1\n");
+        break;
+    case 2:
+        printf("Local da devolucao: Campus2\n");
+        break;
+    case 3:
+        printf("Local da devolucao: Campus5\n");
+        break;
+    case 4:
+        printf("Local da devolucao: Residencias\n");
+        break;
+    }
+    if (vetorRequisicoes[pos].dataDevolucao.dia==-1)
+    {
+        printf("Data de devolucao: ----------\n");
+    }
+    else
+    {
+        printf("Data de devolucao: %d,%d,%d",vetorRequisicoes[pos].dataDevolucao.dia,vetorRequisicoes[pos].dataDevolucao.mes,vetorRequisicoes[pos].dataDevolucao.ano);
+    }
+    printf("----------------------------------------------------------------------------------\n");
+
+
+}
 //void devolucao(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes)
 //{
 //

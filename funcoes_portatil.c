@@ -7,7 +7,7 @@
 char mensagemNumeroIdentificacaoPortatil[] = "\nNumero de Identificacao do portatil: ";
 char mensagemProcessadorPortatil[] = "\nProcessador: \n1-i3\n2-i5\n3-i7\n";
 char mensagemRamPortatil[] = "RAM do portatil (em gigabytes)";
-//char mensagemEstadoPortatil[] = "\nEstado do Portatil: \n1-Disponivel\n2-Indisponivel\n";
+char mensagemEstadoPortatil[] = "\nEstado do Portatil: \n1-Disponivel\n2-Requisitado\n3-Avariado\n";
 char mensagemLocalizacaoPortatil[] = "\nLocalizacao do portatil:\n1- Campus 1\n2- Campus 2\n3- Campus 5\n4- Residencias\n";
 char mensagemValorPortatil[] = "Insira o valor do portatil(em euros)";
 //char mensagemQuantidadeAvariasPortatil[] = "\nQuantidade de avarias";
@@ -104,10 +104,10 @@ void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int posicao)
         printf("Estado: disponivel\n");
         break;
     case 2:
-        printf("Estado: indisponivel\n");
+        printf("Estado: requisitado\n");
         break;
     case 3:
-        printf("Estado: indisponivel\n");
+        printf("Estado: avariado\n");
         break;
     }
     switch(vetor[posicao].localizacaoPortatil)
