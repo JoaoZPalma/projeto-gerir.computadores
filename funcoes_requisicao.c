@@ -13,6 +13,8 @@ char mensagemNome[] = "\nInsira o nome do Utente que pretende realizar a requisi
 
 void requisitarPortatil(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes,tipoPortatil vetorPortateis[],int pos,tipoData dataAtual)
 {
+    int i,verificacao;
+    verificacao=1;
     tipoData dataDevolucao;
     vetorRequisicoes[quantidadeRequisicoes].dataRequisicao = dataAtual;
     int dataAquisicao = transformaData(vetorPortateis[pos].dataAquisicao);
@@ -22,17 +24,29 @@ void requisitarPortatil(tipoRequisicao vetorRequisicoes[],int quantidadeRequisic
     if (dataAquisicao <= dataRequisicao)
     {
         lerString(mensagemCodigo,vetorRequisicoes[quantidadeRequisicoes].codigo,MAX_CODIGO);
-        vetorRequisicoes[quantidadeRequisicoes].identificacaoPortatil = vetorPortateis[pos].identificacao;
-        lerString(mensagemNome,vetorRequisicoes[quantidadeRequisicoes].nome,MAX_STRING);
-        vetorRequisicoes[quantidadeRequisicoes].tipoUtente = lerInteiro(mensagemTipoUtente,1,3);
-        vetorRequisicoes[quantidadeRequisicoes].prazoRequisicao = lerInteiro(mensagemPrazoRequisicao,1,30);
-        vetorRequisicoes[quantidadeRequisicoes].dataDevolucao.ano = -1;
-        vetorRequisicoes[quantidadeRequisicoes].dataDevolucao.mes = -1;
-        vetorRequisicoes[quantidadeRequisicoes].dataDevolucao.dia = -1;
-        vetorRequisicoes[quantidadeRequisicoes].estadoRequisicao = 1;
-        vetorRequisicoes[quantidadeRequisicoes].localDevolucao = -1; //1- Ativa, 2- Concluida
-        vetorRequisicoes[quantidadeRequisicoes].multa = 0;
+        for(i=0; i<quantidadeRequisicoes; i++)
+        {
+            if ((strcmp(vetorRequisicoes[i].codigo,vetorRequisicoes[quantidadeRequisicoes].codigo))==0)
+            {
+                printf("Codigo ja anteriormente inserido, por favor insira um codigo original: ");
+                verificacao=0;
+            }
+        }
+        if (verificacao=1)
+        {
+            vetorRequisicoes[quantidadeRequisicoes].identificacaoPortatil = vetorPortateis[pos].identificacao;
+            lerString(mensagemNome,vetorRequisicoes[quantidadeRequisicoes].nome,MAX_STRING);
+            vetorRequisicoes[quantidadeRequisicoes].tipoUtente = lerInteiro(mensagemTipoUtente,1,3);
+            vetorRequisicoes[quantidadeRequisicoes].prazoRequisicao = lerInteiro(mensagemPrazoRequisicao,1,30);
+            vetorRequisicoes[quantidadeRequisicoes].dataDevolucao.ano = -1;
+            vetorRequisicoes[quantidadeRequisicoes].dataDevolucao.mes = -1;
+            vetorRequisicoes[quantidadeRequisicoes].dataDevolucao.dia = -1;
+            vetorRequisicoes[quantidadeRequisicoes].estadoRequisicao = 1;
+            vetorRequisicoes[quantidadeRequisicoes].localDevolucao = -1; //1- Ativa, 2- Concluida
+            vetorRequisicoes[quantidadeRequisicoes].multa = 0;
 
+            vetorPortateis[pos].estadoPortatil=2;
+        }
         //      vetorRequisicoes[quantidadeRequisicoes].dataDevolucao =
 //           vetorRequisicoes[quantidadeRequisicoes].
         //          vetorRequisicoes[quantidadeRequisicoes].

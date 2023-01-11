@@ -12,9 +12,10 @@ int menuPrincipal(int quantidadePortateisRegistados, int quantidadeRequisicoes, 
 char mensagemRepetir[]="Deseja repetir o procedimento?";
 char mensagemPedirNumeroIdentificaoPortatil[] = "Insira o numero de identificao do portatil:\t";
 char mensagemIdRequisicao[]="Por favor introduza o id do portatil que quer requisitar\n";
-char mensagemDevolucao[]="Por favor introduza o id do portatil que quer devolver\n";
+char mensagemDevolucao[]="Por favor introduza o codigo respetivo a requisicao: \n";
 char mensagemLocalDevolucao[] = "\nLocal de devolucao:\n1- Campus 1\n2- Campus 2\n3- Campus 5\n4- Residencias\n";
-
+char mensagemRenovacao[] = "Por quanto tempo deseja prolongar a reserva (MAXIMO: 7 Dias)";
+char mensagemCodigoRequisicao[] = "\nInsira o respetivo codigo da requisicao: ";
 
 int main()
 {
@@ -29,7 +30,7 @@ int main()
 
     char codigo[MAX_CODIGO];
 
-    int opcaoPrincipal, quantidadePortateisDisponiveis, opcaoRegisto, i, pos, idRequisicao, opcaoFicheiros, erro, duracao, posRequisicao, posPortatil;
+    int opcaoPrincipal, quantidadePortateisDisponiveis, opcaoRegisto, i, pos, idRequisicao, opcaoFicheiros, erro, duracao, posRequisicao, posPortatil, renovacao;
     tipoPortatil vetorPortateis[MAX_PORTATEIS];
 
     tipoData dataAtual, dataDevolucao;
@@ -245,7 +246,23 @@ int main()
                 }
             }
             break;
-        case 7:
+        case 7: //Renovar requisicao portatil
+            lerString(mensagemCodigoRequisicao,codigo,MAX_CODIGO);
+            posRequisicao = procurarRequisicaoPorCodigo(vetorRequisicoes,quantidadeRequisicoes,codigo);
+            if (posRequisicao!=-1 && vetorRequisicoes[pos].estadoRequisicao==1)
+            {
+                renovacao = lerInteiro(mensagemRenovacao,1,7);
+                vetorRequisicoes[posRequisicao].prazoRequisicao += renovacao;
+            }
+            else
+            {
+                if (vetorRequisicoes[pos].estadoRequisicao!=1)
+                {
+                    printf("Impossivel renovar uma requisicao ja concluida!");
+                }
+                else{printf("Requisicao nao encontrada\n");}
+
+            }
             break;
         case 8: //Ficheiros
             do

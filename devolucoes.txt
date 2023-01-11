@@ -1,0 +1,48 @@
+Codigo da requisicao: bachira
+Identificacao do portatil: 123
+Nome do utente: palma
+Tipo de utente: Estudante
+Data de requisicao: 11/1/2023
+Data de devolucao: -1/-1/-1
+Prazo da requisicao: 5
+Local de devolucao: Residencias
+Estado da requisicao: Concluida
+Multa: 10.00
+Processador: i3
+RAM: 32
+Codigo da requisicao: BACHIRA
+Identificacao do portatil: 123
+Nome do utente: palma
+Tipo de utente: Docente
+Data de requisicao: 5/1/2023
+Data de devolucao: -1/-1/-1
+Prazo da requisicao: 7
+Local de devolucao: Residencias
+Estado da requisicao: Concluida
+Multa: 0.00
+Processador: i3
+RAM: 32
+Codigo da requisicao: bachira
+Identificacao do portatil: 123
+Nome do utente: palma
+Tipo de utente: Estudante
+Data de requisicao: 11/1/2023
+Data de devolucao: -1/-1/-1
+Prazo da requisicao: 5
+Local de devolucao: Residencias
+Estado da requisicao: Concluida
+Multa: 140.00
+Processador: i3
+RAM: 32
+Codigo da requisicao: bachira
+Identificacao do portatil: 123
+Nome do utente: palma
+Tipo de utente: Estudante
+Data de requisicao: 11/1/2023
+Data de devolucao: -1/-1/-1
+Prazo da requisicao: 5
+Local de devolucao: Residencias
+Estado da requisicao: Concluida
+Multa: 140.00
+Processador: i3
+RAM: 32
