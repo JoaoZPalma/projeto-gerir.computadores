@@ -12,6 +12,8 @@ int menuPrincipal(int quantidadePortateisRegistados, int quantidadeRequisicoes, 
 char mensagemRepetir[]="Deseja repetir o procedimento?";
 char mensagemPedirNumeroIdentificaoPortatil[] = "Insira o numero de identificao do portatil:\t";
 char mensagemIdRequisicao[]="Por favor introduza o id do portatil que quer requisitar\n";
+char mensagemDevolucao[]="Por favor introduza o id do portatil que quer devolver\n";
+char mensagemLocalDevolucao[] = "\nLocal de devolucao:\n1- Campus 1\n2- Campus 2\n3- Campus 5\n4- Residencias\n";
 
 
 int main()
@@ -21,18 +23,16 @@ int main()
     int quantidadePortateisIndisponiveis = 0;
     int quantidadeRequisicoesAtivas = 0;
     int repetir=0;
-    int *vetorRequisicoes;
+    tipoRequisicao *vetorRequisicoes;
     vetorRequisicoes = NULL;
     FILE *ficheiro;
 
-
-    char mensagemCodigo[] = "\nInsira o codigo respetivo a requisicao: ";
     char codigo[MAX_CODIGO];
 
-    int opcaoPrincipal, quantidadePortateisDisponiveis, opcaoRegisto, i, pos, idRequisicao, opcaoFicheiros, erro;
+    int opcaoPrincipal, quantidadePortateisDisponiveis, opcaoRegisto, i, pos, idRequisicao, opcaoFicheiros, erro, duracao, posRequisicao, posPortatil;
     tipoPortatil vetorPortateis[MAX_PORTATEIS];
 
-    tipoData dataAtual;
+    tipoData dataAtual, dataDevolucao;
     printf("Insira a data atual\n");
     dataAtual = lerData();
     do
@@ -73,11 +73,11 @@ int main()
             }
             while(opcaoRegisto != 0);
             break;
-        case 2:
+        case 2: // Alterar localizacao de portatil
             pos = alterarLocalizacaoPortatil(vetorPortateis,quantidadePortateisRegistados);
             mostrarInformacaoPortatilPorPosicao(vetorPortateis,pos);
             break;
-        case 3:
+        case 3: //Procurar portatil
             pos=-1;
             do
             {
@@ -98,7 +98,7 @@ int main()
             }
             while((repetir==1) &&( pos==-1));
             break;
-        case 4:
+        case 4: //Fazer requisicao
             do
             {
                 idRequisicao = lerInteiro(mensagemIdRequisicao, MIN_ID, MAX_ID);
@@ -113,7 +113,7 @@ int main()
                         vetorRequisicoes = realloc(vetorRequisicoes,(quantidadeRequisicoes+1)*sizeof(tipoRequisicao));
                         if (vetorRequisicoes == NULL)
                         {
-                            printf("MemÃ³ria insuficiente");
+                            printf("Memória insuficiente");
                         }
 
                         requisitarPortatil(vetorRequisicoes,quantidadeRequisicoes,vetorPortateis,pos,dataAtual);
@@ -129,23 +129,125 @@ int main()
             }
             while((repetir==1) &&( pos==-1));
             break;
-        case 5:
- //           lerString(mensagemCodigo,codigo,MAX_CODIGO);
- //           pos = procurarRequisicaoPorCodigo(vetorRequisicoes,quantidadeRequisicoes,codigo);
+        case 5://Mostrar requisicoes
+//           lerString(mensagemCodigo,codigo,MAX_CODIGO);
+//           pos = procurarRequisicaoPorCodigo(vetorRequisicoes,quantidadeRequisicoes,codigo);
 //            if (pos!=-1)
 //            {
 //                mostrarRequisicaoPorPosicao(vetorRequisicoes,quantidadeRequisicoes,pos);
 //            }
-            for(i=0;i<quantidadeRequisicoes;i++)
+            for(i=0; i<quantidadeRequisicoes; i++)
             {
                 mostrarRequisicaoPorPosicao(vetorRequisicoes,quantidadeRequisicoes,i);
             }
             break;
         case 6:
+            lerString(mensagemDevolucao,codigo,MAX_CODIGO);
+            posRequisicao = procurarRequisicaoPorCodigo(vetorRequisicoes,quantidadeRequisicoes,codigo);
+            if (posRequisicao!=-1)
+            {
+                do
+                {
+                    dataDevolucao = lerData();
+                    duracao = calculaDuracao(dataDevolucao,vetorRequisicoes[posRequisicao].dataRequisicao);
+                    if(duracao < 0)
+                    {
+                        printf("Por favor introduza uma data válida (maior que a data de requisicao)\n");
+                    }
+                }
+                while (duracao < 0);
+                vetorRequisicoes[posRequisicao].localDevolucao = lerInteiro(mensagemLocalDevolucao,1,4);
+                vetorRequisicoes[posRequisicao].multa = (duracao - vetorRequisicoes[posRequisicao].prazoRequisicao)*10;
+                vetorRequisicoes[posRequisicao].estadoRequisicao = 2;
+
+                ficheiro = fopen("devolucoes.txt","a");
+                if (ficheiro == NULL)
+                {
+                    printf ("Ficheiro não Existe!!");
+                }
+                else
+                {
+                    fprintf(ficheiro,"Codigo da requisicao: %s\n",vetorRequisicoes[posRequisicao].codigo);
+                    fprintf(ficheiro,"Identificacao do portatil: %d\n",vetorRequisicoes[posRequisicao].identificacaoPortatil);
+                    fprintf(ficheiro,"Nome do utente: %s\n",vetorRequisicoes[posRequisicao].nome);
+                    switch(vetorRequisicoes[posRequisicao].tipoUtente)
+                    {
+                    case 1:
+                        fprintf(ficheiro,"Tipo de utente: Estudante\n");
+                        break;
+                    case 2:
+                        fprintf(ficheiro,"Tipo de utente: Docente\n");
+                        break;
+                    case 3:
+                        fprintf(ficheiro,"Tipo de utente: Tecnico administrativo\n");
+                        break;
+                    }
+                    fprintf(ficheiro,"Data de requisicao: %d/%d/%d\n",vetorRequisicoes[posRequisicao].dataRequisicao.dia,vetorRequisicoes[posRequisicao].dataRequisicao.mes,vetorRequisicoes[posRequisicao].dataRequisicao.ano);
+                    fprintf(ficheiro,"Data de devolucao: %d/%d/%d\n",vetorRequisicoes[posRequisicao].dataDevolucao.dia,vetorRequisicoes[posRequisicao].dataDevolucao.mes,vetorRequisicoes[posRequisicao].dataDevolucao.ano);
+                    fprintf(ficheiro,"Prazo da requisicao: %d\n",vetorRequisicoes[posRequisicao].prazoRequisicao);
+                    switch(vetorRequisicoes[posRequisicao].localDevolucao)
+                    {
+                    case 1:
+                        fprintf(ficheiro,"Local de devolucao: Campus 1\n");
+                        break;
+                    case 2:
+                        fprintf(ficheiro,"Local de devolucao: Campus 2\n");
+                        break;
+                    case 3:
+                        fprintf(ficheiro,"Local de devolucao: Campus 5\n");
+                        break;
+                    case 4:
+                        fprintf(ficheiro,"Local de devolucao: Residencias\n");
+                        break;
+                    }
+                    fprintf(ficheiro,"Estado da requisicao: Concluida\n");
+                    fprintf(ficheiro,"Multa: %.2f\n",vetorRequisicoes[posRequisicao].multa);
+
+                    posPortatil=procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados,vetorRequisicoes[posRequisicao].identificacaoPortatil);
+
+                    switch(vetorPortateis[posPortatil].processador)
+                    {
+                    case 1:
+                        fprintf(ficheiro,"Processador: i3\n");
+                        break;
+                    case 2:
+                        fprintf(ficheiro,"Processador: i5\n");
+                        break;
+                    case 3:
+                        fprintf(ficheiro,"Processador: i7\n");
+                        break;
+                    }
+
+                    switch(vetorPortateis[posPortatil].ram)
+                    {
+                    case 1:
+                        fprintf(ficheiro,"RAM: 4\n");
+                        break;
+                    case 2:
+                        fprintf(ficheiro,"RAM: 8\n");
+                        break;
+                    case 3:
+                        fprintf(ficheiro,"RAM: 16\n");
+                        break;
+                    case 4:
+                        fprintf(ficheiro,"RAM: 32\n");
+                        break;
+                    case 5:
+                        fprintf(ficheiro,"RAM: 64\n");
+                        break;
+                    }
+                    vetorPortateis[posPortatil].localizacaoPortatil=vetorRequisicoes[posRequisicao].localDevolucao;
+                    erro = fclose(ficheiro);
+                    if (erro != 0)
+                    {
+                        printf ("Erro %d no fecho ficheiro", erro);
+                    }
+                }
+            }
             break;
         case 7:
             break;
-        case 8:   
+        case 8: //Ficheiros
             do
             {
                 opcaoFicheiros = menuFicheiros();
@@ -155,7 +257,7 @@ int main()
                     ficheiro = fopen("portateis.dat", "wb");
                     if (ficheiro == NULL)
                     {
-                        printf ("Ficheiro nÃ£o Existe!!");
+                        printf ("Ficheiro não Existe!!");
                     }
                     else
                     {
@@ -172,7 +274,7 @@ int main()
                     ficheiro = fopen("portateis.dat", "rb");
                     if (ficheiro == NULL)
                     {
-                        printf ("Ficheiro nÃ£o Existe!!");
+                        printf ("Ficheiro não Existe!!");
                     }
                     else
                     {
@@ -189,7 +291,7 @@ int main()
                     ficheiro = fopen("requisicoes.dat", "wb");
                     if (ficheiro == NULL)
                     {
-                        printf ("Ficheiro nÃ£o Existe!!");
+                        printf ("Ficheiro não Existe!!");
                     }
                     else
                     {
@@ -206,7 +308,7 @@ int main()
                     ficheiro = fopen("requisicoes.dat", "rb");
                     if (ficheiro == NULL)
                     {
-                        printf ("Ficheiro nÃ£o Existe!!");
+                        printf ("Ficheiro não Existe!!");
                     }
                     else
                     {
@@ -214,7 +316,7 @@ int main()
                         vetorRequisicoes = realloc(vetorRequisicoes,quantidadeRequisicoes*sizeof(tipoRequisicao));
                         if (vetorRequisicoes == NULL)
                         {
-                            printf("MemÃ³ria insuficiente");
+                            printf("Memória insuficiente");
                         }
                         fread(vetorRequisicoes,sizeof(tipoRequisicao),quantidadeRequisicoes,ficheiro);
                         erro = fclose(ficheiro);
@@ -224,6 +326,15 @@ int main()
                         }
                     }
                     break;
+                case 0:
+                    printf("\nA voltar ao menu anterior\n\n");
+                    break;
+                default:
+                    printf ("Opcao Invalida\n");
+                    break;
+                }
+            }
+            while(opcaoFicheiros != 0);
             break;
         case 9:
             break;
@@ -245,7 +356,6 @@ int main()
     free(vetorRequisicoes);
     return 0;
 }
-
 int menuPrincipal(int quantidadePortateisRegistados, int quantidadeRequisicoes, int quantidadeRequisicoesAtivas, int quantidadePortateisIndisponiveis)
 {
 
@@ -257,6 +367,7 @@ int menuPrincipal(int quantidadePortateisRegistados, int quantidadeRequisicoes, 
     printf("2 - Alterar posicao portatil\n");
     printf("3 - Procurar portatil por numero de identificao\n");
     printf("4 - Realizar requisicao de portatil\n");
+    printf("5 - Mostrar todas as requisicoes\n");
 
     printf("Opcao: ");
 

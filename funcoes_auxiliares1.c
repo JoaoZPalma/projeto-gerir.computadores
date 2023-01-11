@@ -203,3 +203,18 @@ int transformaData (tipoData data)
 
     return diasTotal;
 }
+int menuFicheiros()
+{
+    int opcaoFicheiros;
+    printf("Por favor introduza uma opcao\n");
+    printf("1 - Armazenar dados dos computadores\n");
+    printf("2 - Ler dados dos computadores\n");
+    printf("3 - Armazenar dados das requisicoes\n");
+    printf("4 - Ler dados das requisicoes\n");
+    printf("0 - Voltar ao menu anterior\n");
+    printf("Opcao: ");
+
+    scanf("%d",&opcaoFicheiros);
+    limpaBufferStdin();
+    return opcaoFicheiros;
+}

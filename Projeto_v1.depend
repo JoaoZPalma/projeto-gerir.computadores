@@ -9,7 +9,7 @@
 
 1671109359 c:\users\simao\onedrive\ambiente de trabalho\projeto\funcoes auxiliares-20221215\constantes.h
 
-1672882194 source:c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\main.c
+1672925309 source:c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\main.c
 	<stdio.h>
 	<stdlib.h>
 	"constantes1.h"
@@ -22,104 +22,34 @@
 
 1671104317 c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\constantes.h
 
-1672917935 source:c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\funcoes_portatil.c
+1673377217 source:c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\funcoes_portatil.c
 	<stdio.h>
 	<string.h>
 	"funcoes_auxiliares1.h"
 	"funcoes_portatil.h"
 
-1671110292 source:c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\funcoes_requisicao.c
-	<stdio.h>
-	<string.h>
-
-1672879043 source:c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\funcoes_auxiliares1.c
-	<stdio.h>
-	<string.h>
-	"funcoes_auxiliares1.h"
-
-1672879013 c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\funcoes_auxiliares1.h
-	"constantes1.h"
-
-1672879013 c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\constantes1.h
-
-1672917678 c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\funcoes_portatil.h
-	"funcoes_auxiliares1.h"
-
-1671194316 c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\funcoes_requisicao.h
-	"constantes1.h"
-	"funcoes_auxiliares1.h"
-
-1672918315 source:c:\users\2221421\desktop\projeto-gerir.computadores-master\funcoes_auxiliares1.c
-	<stdio.h>
-	<string.h>
-	"funcoes_auxiliares1.h"
-
-1672918315 c:\users\2221421\desktop\projeto-gerir.computadores-master\funcoes_auxiliares1.h
-	"constantes1.h"
-
-1672918315 c:\users\2221421\desktop\projeto-gerir.computadores-master\constantes1.h
-
-1672918315 source:c:\users\2221421\desktop\projeto-gerir.computadores-master\funcoes_requisicao.c
-	<stdio.h>
-	<string.h>
-
-1672925543 source:c:\users\2221421\desktop\projeto-gerir.computadores-master\main.c
-	<stdio.h>
-	<stdlib.h>
-	"constantes1.h"
-	"funcoes_auxiliares1.h"
-	"funcoes_portatil.h"
-	"funcoes_requisicao.h"
-
-1672921055 c:\users\2221421\desktop\projeto-gerir.computadores-master\funcoes_portatil.h
-	"funcoes_auxiliares1.h"
-
-1672918315 c:\users\2221421\desktop\projeto-gerir.computadores-master\funcoes_requisicao.h
-	"constantes1.h"
-	"funcoes_auxiliares1.h"
-
-1672925535 source:c:\users\2221421\desktop\projeto-gerir.computadores-master\funcoes_portatil.c
-	<stdio.h>
-	<string.h>
-	"funcoes_auxiliares1.h"
-	"funcoes_portatil.h"
-
-1673117857 source:c:\users\drudo\desktop\wa\funcoes_auxiliares1.c
-	<stdio.h>
-	<string.h>
-	"funcoes_auxiliares1.h"
-
-1673105902 c:\users\drudo\desktop\wa\funcoes_auxiliares1.h
-	"constantes1.h"
-
-1673267845 c:\users\drudo\desktop\wa\constantes1.h
-
-1673372642 source:c:\users\drudo\desktop\wa\funcoes_requisicao.c
+1673430790 source:c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\funcoes_requisicao.c
 	<stdio.h>
 	<string.h>
 	"funcoes_auxiliares1.h"
 	"funcoes_requisicao.h"
 	"funcoes_portatil.h"
 
-1673373812 source:c:\users\drudo\desktop\wa\funcoes_portatil.c
+1673377217 source:c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\funcoes_auxiliares1.c
 	<stdio.h>
 	<string.h>
 	"funcoes_auxiliares1.h"
-	"funcoes_portatil.h"
 
-1673105009 c:\users\drudo\desktop\wa\funcoes_portatil.h
+1673378028 c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\funcoes_auxiliares1.h
+	"constantes1.h"
+
+1673377217 c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\constantes1.h
+
+1673377217 c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\funcoes_portatil.h
 	"funcoes_auxiliares1.h"
 
-1673372284 c:\users\drudo\desktop\wa\funcoes_requisicao.h
+1673403181 c:\users\simao\onedrive\ambiente de trabalho\projeto\projeto_v1\funcoes_requisicao.h
 	"constantes1.h"
 	"funcoes_auxiliares1.h"
 	"funcoes_portatil.h"
-
-1673374907 source:c:\users\drudo\desktop\wa\main.c
-	<stdio.h>
-	<stdlib.h>
-	"constantes1.h"
-	"funcoes_auxiliares1.h"
-	"funcoes_portatil.h"
-	"funcoes_requisicao.h"
 
