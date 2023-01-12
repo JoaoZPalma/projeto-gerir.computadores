@@ -42,7 +42,7 @@ int main()
 
     char codigo[MAX_CODIGO];
 
-    int opcaoPrincipal, opcaoRegisto, i, pos, idRequisicao, opcaoFicheiros, erro, duracao, posRequisicao, posPortatil, renovacao, idAvaria, opcaoAvaria,maiorData;
+    int opcaoPrincipal, opcaoRegisto, i, j, pos, idRequisicao, opcaoFicheiros, erro, duracao, posRequisicao, posPortatil, renovacao, idAvaria, opcaoAvaria,maiorData;
     tipoPortatil vetorPortateis[MAX_PORTATEIS];
 
     float percentagemi3, percentagemi5, percentagemi7, mediaMulta, somaMulta;
@@ -82,7 +82,7 @@ int main()
         vetorRequisicoes = realloc(vetorRequisicoes,quantidadeRequisicoes*sizeof(tipoRequisicao));
         if (vetorRequisicoes == NULL)
         {
-            printf("Mem髍ia insuficiente");
+            printf("Mem贸ria insuficiente");
         }
         fread(vetorRequisicoes,sizeof(tipoRequisicao),quantidadeRequisicoes,ficheiro);
         erro = fclose(ficheiro);
@@ -110,7 +110,7 @@ int main()
                     registarPortatil(vetorPortateis,quantidadePortateisRegistados);
                     quantidadePortateisRegistados++;
                     break;
-                case 2:
+               case 2:
                     if (quantidadePortateisRegistados==0)
                     {
                         printf("Nao existem portateis registados!\n");
@@ -118,6 +118,25 @@ int main()
                     for(i = 0; i < quantidadePortateisRegistados; i++)
                     {
                         mostrarInformacaoPortatilPorPosicao(vetorPortateis,i);
+                        for(j=0; j<quantidadeRequisicoes; j++)
+                        {
+                            if(vetorPortateis[i].identificacao==vetorRequisicoes[j].identificacaoPortatil)
+                            {
+                                switch(vetorRequisicoes[j].identificacaoPortatil)
+                                {
+                                case 1:
+                                    printf("Requisicao feita por estudante\n");
+                                    break;
+                                case 2:
+                                    printf("Requisicao feita por docente\n");
+                                    break;
+                                case 3:
+                                    printf("Requisicao feita por tecnico administrativo\n");
+                                    break;
+                                }
+                                printf("O prazo desta requisicao e de %d dias",vetorRequisicoes[j].prazoRequisicao);
+                            }
+                        }
                     }
                     break;
                 case 3: //Procurar portatil
@@ -170,7 +189,7 @@ int main()
                         vetorRequisicoes = realloc(vetorRequisicoes,(quantidadeRequisicoes+1)*sizeof(tipoRequisicao));
                         if (vetorRequisicoes == NULL)
                         {
-                            printf("Mem髍ia insuficiente");
+                            printf("Mem贸ria insuficiente");
                         }
 
                         requisitarPortatil(vetorRequisicoes,quantidadeRequisicoes,vetorPortateis,pos,dataAtual);
@@ -214,7 +233,7 @@ int main()
                     duracao = calculaDuracao(dataDevolucao,vetorRequisicoes[posRequisicao].dataRequisicao);
                     if(duracao < 0)
                     {
-                        printf("Por favor introduza uma data v醠ida (maior que a data de requisicao)\n");
+                        printf("Por favor introduza uma data v谩lida (maior que a data de requisicao)\n");
                     }
                 }
                 while (duracao < 0);
@@ -225,7 +244,7 @@ int main()
                 ficheiro = fopen("devolucoes.txt","a");
                 if (ficheiro == NULL)
                 {
-                    printf ("Ficheiro n鉶 Existe!!");
+                    printf ("Ficheiro n茫o Existe!!");
                 }
                 else
                 {
@@ -364,7 +383,7 @@ int main()
                                     ficheiro = fopen("devolucoes.txt","a");
                                     if (ficheiro == NULL)
                                     {
-                                        printf ("Ficheiro n鉶 Existe!!");
+                                        printf ("Ficheiro n茫o Existe!!");
                                     }
                                     else
                                     {
@@ -452,7 +471,7 @@ int main()
                         vetorAvarias = realloc(vetorAvarias,(quantidadeAvarias+1)*sizeof(tipoAvaria));
                         if (vetorRequisicoes == NULL)
                         {
-                            printf("Mem髍ia insuficiente");
+                            printf("Mem贸ria insuficiente");
                         }
                         vetorAvarias[quantidadeAvarias].dataAquisicao=vetorPortateis[pos].dataAquisicao;
                         strcpy(vetorAvarias[quantidadeAvarias].designacao,vetorPortateis[pos].designacao);
@@ -602,7 +621,7 @@ int main()
                         vetorRequisicoes = realloc(vetorRequisicoes,quantidadeRequisicoes*sizeof(tipoRequisicao));
                         if (vetorRequisicoes == NULL)
                         {
-                            printf("Mem髍ia insuficiente");
+                            printf("Mem贸ria insuficiente");
                         }
                         fread(vetorRequisicoes,sizeof(tipoRequisicao),quantidadeRequisicoes,ficheiro);
                         erro = fclose(ficheiro);
