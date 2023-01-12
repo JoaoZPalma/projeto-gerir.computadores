@@ -23,6 +23,11 @@ int quantidadePortateisRegistados,quantidadePortateisIndisponiveis;
 
 void registarPortatil(tipoPortatil vetorPortateis[],int quantidadePortateisRegistados)
 {
+    if(quantidadePortateisRegistados>=MAX_PORTATEIS)
+    {
+        printf("Nao e possivel registar mais portateis, o maximo foi atingido!\n");
+    }
+    else{
     int i, pos;
     pos = -1;
     printf("Insira agora os dados de registo do computador em causa:");
@@ -82,7 +87,7 @@ void registarPortatil(tipoPortatil vetorPortateis[],int quantidadePortateisRegis
 //            vetorPortateis[quantidadePortateisRegistados].quantidadeRequisicoes = 0;
 //            quantidadePortateisRegistados++;
 //        }
-
+    }
 }
 void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int posicao)
 {

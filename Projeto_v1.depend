@@ -63,7 +63,7 @@
 
 1673477740 c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\constantes1.h
 
-1673474455 source:c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\funcoes_portatil.c
+1673539941 source:c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\funcoes_portatil.c
 	<stdio.h>
 	<string.h>
 	"funcoes_auxiliares1.h"
@@ -84,7 +84,7 @@
 	"funcoes_auxiliares1.h"
 	"funcoes_portatil.h"
 
-1673521099 source:c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\main.c
+1673541634 source:c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
