@@ -46,6 +46,8 @@ void requisitarPortatil(tipoRequisicao vetorRequisicoes[],int quantidadeRequisic
             vetorRequisicoes[quantidadeRequisicoes].multa = 0;
 
             vetorPortateis[pos].estadoPortatil=2;
+            vetorPortateis[pos].quantidadeRequisicoes++;
+            vetorPortateis[pos].totalDiasRequisicao += vetorRequisicoes[quantidadeRequisicoes].prazoRequisicao;
         }
         //      vetorRequisicoes[quantidadeRequisicoes].dataDevolucao =
 //           vetorRequisicoes[quantidadeRequisicoes].
@@ -150,16 +152,21 @@ void mostrarRequisicaoPorPosicao(tipoRequisicao vetorRequisicoes[],int quantidad
     {
         printf("Data de devolucao: %d,%d,%d",vetorRequisicoes[pos].dataDevolucao.dia,vetorRequisicoes[pos].dataDevolucao.mes,vetorRequisicoes[pos].dataDevolucao.ano);
     }
+    if (vetorRequisicoes[pos].multa==0)
+    {
+        printf("Multa total num valor de: ---------\n");
+    }
+    else{printf("Multa total num valor de: %.2f\n",vetorRequisicoes[pos].multa);}
     printf("----------------------------------------------------------------------------------\n");
 
 
 }
-int calculaDuracao(tipoData dataDevolucao, tipoData dataRequisicao)
+int calculaDuracao(tipoData dataFinal, tipoData dataInicial)
 {
-    int diasDataDevolucao = transformaData(dataDevolucao);
-    int diasDataRequisicao = transformaData(dataRequisicao);
+    int diasDataFinal = transformaData(dataFinal);
+    int diasDataInicial = transformaData(dataInicial);
 
-    int duracao = diasDataDevolucao - diasDataRequisicao;
+    int duracao = diasDataFinal - diasDataInicial;
 
     return duracao;
 }

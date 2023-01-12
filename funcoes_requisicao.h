@@ -22,6 +22,6 @@ void requisitarPortatil(tipoRequisicao vetorRequisicoes[],int quantidadeRequisic
 int procurarRequisicaoPorCodigo(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes,char codigo[]);
 void mostrarRequisicaoPorPosicao(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes,int pos);
 int calculaDuracao(tipoData dataDevolucao, tipoData dataRequisicao);
-
+int menuAvarias();
 
 #endif
