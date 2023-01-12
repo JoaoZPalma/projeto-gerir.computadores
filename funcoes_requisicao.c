@@ -10,7 +10,6 @@ char mensagemPrazoRequisicao[] = "\nPor quantos dias deseja fazer a requisicao?:
 char mensagemCodigo[] = "\nInsira o respetivo codigo da requisicao: ";
 char mensagemNome[] = "\nInsira o nome do Utente que pretende realizar a requisicao: ";
 
-
 void requisitarPortatil(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes,tipoPortatil vetorPortateis[],int pos,tipoData dataAtual)
 {
     int i,verificacao;
@@ -49,26 +48,14 @@ void requisitarPortatil(tipoRequisicao vetorRequisicoes[],int quantidadeRequisic
             vetorPortateis[pos].quantidadeRequisicoes++;
             vetorPortateis[pos].totalDiasRequisicao += vetorRequisicoes[quantidadeRequisicoes].prazoRequisicao;
         }
-        //      vetorRequisicoes[quantidadeRequisicoes].dataDevolucao =
-//           vetorRequisicoes[quantidadeRequisicoes].
-        //          vetorRequisicoes[quantidadeRequisicoes].
-        //quantidadeRequisicoes++;
     }
-
-
-
 }
 
 
 int procurarRequisicaoPorCodigo(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes, char codigo[])
 {
     int i,pos,testar;
-//    if ((strcmp(vetorRequisicoes[]->codigo[MAX_CODIGO],codigo[MAX_CODIGO])==0))
-//    {
-//
-//        // printf("Insira o numero de identificacao\n");
-//        lerString(mensagemCodigo,codigo,MAX_CODIGO);
-//    }
+
     if (quantidadeRequisicoes == 0)
     {
         printf("Nao existem requisicoes efetuadas\n");
@@ -92,7 +79,6 @@ int procurarRequisicaoPorCodigo(tipoRequisicao vetorRequisicoes[],int quantidade
             }
         }
     }
-    //printf("%d",pos);
     return pos;
 }
 
@@ -156,16 +142,16 @@ void mostrarRequisicaoPorPosicao(tipoRequisicao vetorRequisicoes[],int quantidad
     {
         printf("Multa total num valor de: ---------\n");
     }
-    else{printf("Multa total num valor de: %.2f\n",vetorRequisicoes[pos].multa);}
+    else
+    {
+        printf("Multa total num valor de: %.2f\n",vetorRequisicoes[pos].multa);
+    }
     printf("----------------------------------------------------------------------------------\n");
-
-
 }
 int calculaDuracao(tipoData dataFinal, tipoData dataInicial)
 {
     int diasDataFinal = transformaData(dataFinal);
     int diasDataInicial = transformaData(dataInicial);
-
     int duracao = diasDataFinal - diasDataInicial;
 
     return duracao;

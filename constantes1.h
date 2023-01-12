@@ -9,4 +9,4 @@
 #define MIN_ID 1
 #define MAX_ID 99999
 #define MAX_CARACTERES 999999
-#endif // CONSTANTES_H_INCLUDED
+#endif

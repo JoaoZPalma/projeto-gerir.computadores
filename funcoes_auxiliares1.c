@@ -48,16 +48,13 @@ float lerFloat(char mensagem[MAX_STRING], float minimo, float maximo)
         }
         else
         {
-
             if(numero<minimo || numero>maximo)
             {
                 printf("Numero invalido. Insira novamente:\n");
             }
-
         }
     }
     while(numero<minimo || numero>maximo || controlo ==0);
-
     return numero;
 }
 
@@ -91,7 +88,6 @@ void lerString(char mensagem[MAX_STRING], char vetorCaracteres[MAX_STRING], int 
     {
         vetorCaracteres[tamanhoString-1] = '\0'; 	//Elimina o \n da string armazenada em vetor
     }
-
 }
 
 void limpaBufferStdin(void)
@@ -104,20 +100,20 @@ void limpaBufferStdin(void)
     while (chr != '\n' && chr != EOF);
 }
 
-void gravaFicheiroBinario(void)
-{
-    FILE *ficheiroBin;
-    int elementosEscritos;
-    ficheiroBin = fopen("dados.dat", "wb");
-    if(ficheiroBin == NULL)
-    {
-        printf("Erro ao salvar o ficheiro");
-    }
-    else
-    {
-        // elementosEscritos = fwrite(vetor[],sizeof(variavel))
-    }
-}
+//void gravaFicheiroBinario(void)
+//{
+//    FILE *ficheiroBin;
+//    int elementosEscritos;
+//    ficheiroBin = fopen("dados.dat", "wb");
+//    if(ficheiroBin == NULL)
+//    {
+//        printf("Erro ao salvar o ficheiro");
+//    }
+//    else
+//    {
+//        // elementosEscritos = fwrite(vetor[],sizeof(variavel))
+//    }
+//}
 
 
 tipoData lerData(void)
@@ -154,7 +150,6 @@ tipoData lerData(void)
     }
 
     data.dia = lerInteiro(mensagemDataDia,1, maxDiasMes);
-
     return data;
 }
 int transformaData (tipoData data)
@@ -200,10 +195,6 @@ int transformaData (tipoData data)
         }
     }
     diasTotal = data.dia + diasAno + diasMes;
-//    printf("\n\n %d \n\n", diasMes);
-//    printf("\n\n %d \n\n", diasAno);
-//    printf("\n\n %d \n\n", data.dia);
-
     return diasTotal;
 }
 int menuFicheiros()

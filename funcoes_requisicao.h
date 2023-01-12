@@ -5,9 +5,6 @@
 #include "funcoes_auxiliares1.h"
 #include "funcoes_portatil.h"
 
-//char mensagemCodigo[] = "\nInsira o codigo respetivo a requisicao: ";
-
-
 typedef struct
 {
     int identificacaoPortatil, tipoUtente, prazoRequisicao, estadoRequisicao, localDevolucao;
@@ -15,10 +12,9 @@ typedef struct
     tipoData dataRequisicao, dataDevolucao;
     float multa;
 
-}tipoRequisicao;
+} tipoRequisicao;
 
 void requisitarPortatil(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes,tipoPortatil vetorPortateis[],int pos,tipoData dataAtual);
-//tipoData calculaDataDevolucao(tipoData dataRequisicao, int prazoRequisicao);
 int procurarRequisicaoPorCodigo(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes,char codigo[]);
 void mostrarRequisicaoPorPosicao(tipoRequisicao vetorRequisicoes[],int quantidadeRequisicoes,int pos);
 int calculaDuracao(tipoData dataDevolucao, tipoData dataRequisicao);

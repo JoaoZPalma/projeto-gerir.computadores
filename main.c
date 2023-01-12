@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 #include "constantes1.h"
 #include "funcoes_auxiliares1.h"
 #include "funcoes_portatil.h"
@@ -16,10 +15,7 @@ char mensagemDevolucao[]="Por favor introduza o codigo respetivo a requisicao: \
 char mensagemLocalDevolucao[] = "\nLocal de devolucao:\n1- Campus 1\n2- Campus 2\n3- Campus 5\n4- Residencias\n";
 char mensagemRenovacao[] = "Por quanto tempo deseja prolongar a reserva (MAXIMO: 7 Dias)";
 char mensagemCodigoRequisicao[] = "\nInsira o respetivo codigo da requisicao: ";
-//char mensagemCodigoRenovacao[] = "\nInsira o respetivo codigo da requisicao: ";
 char mensagemAvaria[] = "Qual o tipo de avaria?\n 1 - Permanente\n 2 - Temporaria\n";
-
-
 
 int main()
 {
@@ -42,7 +38,7 @@ int main()
 
     char codigo[MAX_CODIGO];
 
-    int opcaoPrincipal, opcaoRegisto, i, j, pos, idRequisicao, opcaoFicheiros, erro, duracao, posRequisicao, posPortatil, renovacao, idAvaria, opcaoAvaria,maiorData;
+    int opcaoPrincipal, opcaoRegisto, i,j, pos, idRequisicao, opcaoFicheiros, erro, duracao, posRequisicao, posPortatil, renovacao, idAvaria, opcaoAvaria,maiorData;
     tipoPortatil vetorPortateis[MAX_PORTATEIS];
 
     float percentagemi3, percentagemi5, percentagemi7, mediaMulta, somaMulta;
@@ -82,7 +78,7 @@ int main()
         vetorRequisicoes = realloc(vetorRequisicoes,quantidadeRequisicoes*sizeof(tipoRequisicao));
         if (vetorRequisicoes == NULL)
         {
-            printf("Mem贸ria insuficiente");
+            printf("Mem髍ia insuficiente");
         }
         fread(vetorRequisicoes,sizeof(tipoRequisicao),quantidadeRequisicoes,ficheiro);
         erro = fclose(ficheiro);
@@ -94,9 +90,6 @@ int main()
 
     do
     {
-
-
-
         opcaoPrincipal = menuPrincipal(quantidadePortateisRegistados, quantidadeRequisicoes, quantidadeRequisicoesAtivas, quantidadePortateisAvariados);
         switch (opcaoPrincipal)
         {
@@ -110,7 +103,7 @@ int main()
                     registarPortatil(vetorPortateis,quantidadePortateisRegistados);
                     quantidadePortateisRegistados++;
                     break;
-               case 2:
+                case 2:
                     if (quantidadePortateisRegistados==0)
                     {
                         printf("Nao existem portateis registados!\n");
@@ -143,8 +136,6 @@ int main()
                     pos=-1;
                     do
                     {
-//                numeroIdentificacao = lerInteiro(mensagemPedirNumeroIdentificaoPortatil,1,99999);
-//                pos = procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados,numeroIdentificacao);
                         pos= procurarPortatilPorIdentificacao(vetorPortateis,quantidadePortateisRegistados,-1,1);
                         if (pos != -1)
                         {
@@ -189,7 +180,7 @@ int main()
                         vetorRequisicoes = realloc(vetorRequisicoes,(quantidadeRequisicoes+1)*sizeof(tipoRequisicao));
                         if (vetorRequisicoes == NULL)
                         {
-                            printf("Mem贸ria insuficiente");
+                            printf("Mem髍ia insuficiente");
                         }
 
                         requisitarPortatil(vetorRequisicoes,quantidadeRequisicoes,vetorPortateis,pos,dataAtual);
@@ -211,12 +202,6 @@ int main()
             while((repetir==1) &&( pos==-1));
             break;
         case 4://Mostrar requisicoes
-//           lerString(mensagemCodigo,codigo,MAX_CODIGO);
-//           pos = procurarRequisicaoPorCodigo(vetorRequisicoes,quantidadeRequisicoes,codigo);
-//            if (pos!=-1)
-//            {
-//                mostrarRequisicaoPorPosicao(vetorRequisicoes,quantidadeRequisicoes,pos);
-//            }
             for(i=0; i<quantidadeRequisicoes; i++)
             {
                 mostrarRequisicaoPorPosicao(vetorRequisicoes,quantidadeRequisicoes,i);
@@ -233,7 +218,7 @@ int main()
                     duracao = calculaDuracao(dataDevolucao,vetorRequisicoes[posRequisicao].dataRequisicao);
                     if(duracao < 0)
                     {
-                        printf("Por favor introduza uma data v谩lida (maior que a data de requisicao)\n");
+                        printf("Por favor introduza uma data v醠ida (maior que a data de requisicao)\n");
                     }
                 }
                 while (duracao < 0);
@@ -244,7 +229,7 @@ int main()
                 ficheiro = fopen("devolucoes.txt","a");
                 if (ficheiro == NULL)
                 {
-                    printf ("Ficheiro n茫o Existe!!");
+                    printf ("Ficheiro n鉶 Existe!!");
                 }
                 else
                 {
@@ -342,11 +327,6 @@ int main()
                 {
                     printf("Impossivel renovar uma requisicao ja concluida!");
                 }
-//                else
-//                {
-//                    printf("Requisicao nao encontrada\n");
-//                }
-
             }
             break;
         case 7://Registar avaria ou reparacao
@@ -383,7 +363,7 @@ int main()
                                     ficheiro = fopen("devolucoes.txt","a");
                                     if (ficheiro == NULL)
                                     {
-                                        printf ("Ficheiro n茫o Existe!!");
+                                        printf ("Ficheiro n鉶 Existe!!");
                                     }
                                     else
                                     {
@@ -471,7 +451,7 @@ int main()
                         vetorAvarias = realloc(vetorAvarias,(quantidadeAvarias+1)*sizeof(tipoAvaria));
                         if (vetorRequisicoes == NULL)
                         {
-                            printf("Mem贸ria insuficiente");
+                            printf("Mem髍ia insuficiente");
                         }
                         vetorAvarias[quantidadeAvarias].dataAquisicao=vetorPortateis[pos].dataAquisicao;
                         strcpy(vetorAvarias[quantidadeAvarias].designacao,vetorPortateis[pos].designacao);
@@ -549,9 +529,7 @@ int main()
                     printf("Nao existem requisicoes!\n");
                 }
             }
-
             break;
-
         case 8: //Ficheiros
             do
             {
@@ -621,7 +599,7 @@ int main()
                         vetorRequisicoes = realloc(vetorRequisicoes,quantidadeRequisicoes*sizeof(tipoRequisicao));
                         if (vetorRequisicoes == NULL)
                         {
-                            printf("Mem贸ria insuficiente");
+                            printf("Mem髍ia insuficiente");
                         }
                         fread(vetorRequisicoes,sizeof(tipoRequisicao),quantidadeRequisicoes,ficheiro);
                         erro = fclose(ficheiro);
@@ -663,7 +641,6 @@ int main()
                 quantidadeEstudantes=0;
                 quantidadeDocentes=0;
                 quantidadeTecnico=0;
-
 
                 for(i=0; i<quantidadePortateisRegistados; i++)
                 {
@@ -837,9 +814,7 @@ int main()
         default:
             printf ("\nOpcao Invalida\n");
             break;
-
         }
-
     }
     while(opcaoPrincipal != 0);
     free(vetorRequisicoes);
@@ -847,7 +822,6 @@ int main()
 }
 int menuPrincipal(int quantidadePortateisRegistados, int quantidadeRequisicoes, int quantidadeRequisicoesAtivas, int quantidadePortateisAvariados)
 {
-
     int opcao, quantidadePortateisDisponiveis;//, quantidadePortateisDisponiveis,quantidadePortateisRegistados,quantidadePortateisRequisitados,quantidadePortateisAvariados;
     quantidadePortateisDisponiveis = quantidadePortateisRegistados-quantidadeRequisicoesAtivas-quantidadePortateisAvariados;
     printf("\nQuantidade de portateis existentes: %d\t\t Quantidade de requisicoes totais: %d\n", quantidadePortateisRegistados, quantidadeRequisicoes);
@@ -865,8 +839,6 @@ int menuPrincipal(int quantidadePortateisRegistados, int quantidadeRequisicoes, 
     printf("11 - Apresentar avarias\n");
     printf("\n0 - Fechar programa!\n");
     printf("Opcao: ");
-
-
 
     scanf("%d",&opcao);
     limpaBufferStdin();

@@ -2,7 +2,6 @@
 #define FUNCOES_PORTATIL_H_INCLUDED
 
 #include "funcoes_auxiliares1.h"
-//#include "constantes1.h"
 
 typedef struct
 {
@@ -10,10 +9,7 @@ typedef struct
     char designacao[15];
     tipoData dataAquisicao;
     float valor;
-
-}tipoPortatil;
-
-
+} tipoPortatil;
 
 void registarPortatil(tipoPortatil vetor[],int quantidadeDeComputadoresRegistados);
 void mostrarInformacaoPortatilPorPosicao(tipoPortatil vetor[], int posicao);
@@ -21,6 +17,5 @@ int menuRegistoPortatil();
 int menuRAM();
 int procurarPortatilPorIdentificacao(tipoPortatil vetor[],int quantidadePortateisRegistados, int numeroIdentificacao, int mostrarMensagem);
 int alterarLocalizacaoPortatil(tipoPortatil vetor[], int quantidadePortateisRegistados);
-
 
 #endif

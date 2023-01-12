@@ -61,30 +61,30 @@
 1673474158 c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\funcoes_auxiliares1.h
 	"constantes1.h"
 
-1673477740 c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\constantes1.h
+1673554920 c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\constantes1.h
 
-1673539941 source:c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\funcoes_portatil.c
+1673554923 source:c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\funcoes_portatil.c
 	<stdio.h>
 	<string.h>
 	"funcoes_auxiliares1.h"
 	"funcoes_portatil.h"
 
-1673462000 c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\funcoes_portatil.h
+1673554923 c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\funcoes_portatil.h
 	"funcoes_auxiliares1.h"
 
-1673521135 source:c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\funcoes_requisicao.c
+1673554834 source:c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\funcoes_requisicao.c
 	<stdio.h>
 	<string.h>
 	"funcoes_auxiliares1.h"
 	"funcoes_requisicao.h"
 	"funcoes_portatil.h"
 
-1673474182 c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\funcoes_requisicao.h
+1673554850 c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\funcoes_requisicao.h
 	"constantes1.h"
 	"funcoes_auxiliares1.h"
 	"funcoes_portatil.h"
 
-1673541634 source:c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\main.c
+1673554737 source:c:\users\drudo\desktop\projeto-gerir.computadores-master_comdevolucao\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
